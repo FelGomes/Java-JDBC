@@ -27,11 +27,5 @@ public class Usuario extends Entidade{
         this.cpf = cpf;
     }
     
-    @Override
-    public String toString(){
-        return "Dados: " + getId() + "\n"
-                + "Nome: " + getNome() +"\n"
-                + "Telefone: " +getTelefone() +"\n"
-                + "==============================";
-    }
+    
 }

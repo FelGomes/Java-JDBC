@@ -48,15 +48,5 @@ public class Endereco extends Entidade{
         this.numero = numero;
     }
     
-    @Override
-    public String toString() {
-        return "Dados: " + getId() + "\n"
-                + "Rua: " + this.rua + "\n"
-                + "Bairro: " + this.bairro + "\n"
-                + "Cep: " + this.cep +"\n"
-                + "Numero: " + this.numero + "\n"
-                + "==============================";
-           
-                
-    }
+    
 }

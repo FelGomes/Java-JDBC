@@ -28,13 +28,6 @@ public class Estabelecimento extends Entidade{
 
 
     
-    @Override
-    public String toString(){
-        return "Dados: " + getId() + "\n"
-                + "Nome: " + getNome() + "\n"
-                + "Telefone: " +getTelefone() + "\n"
-                + "CNPJ: " + this.cnpj + "\n"
-                + "===============================";
-    }
+   
     
 }

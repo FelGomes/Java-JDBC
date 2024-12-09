@@ -28,17 +28,5 @@ public class Fornecedores extends Entidade {
         this.cnpj = cnpj;
     }
 
-    @Override
-    public String toString() {
-        return "Dados: " + this.getId() + "\n"
-                + "Razao Social: " + this.razaoSocial + "\n "
-                + "CNPJ: " + this.cnpj + "\n"
-                + "Contato: " + this.getTelefone() + "\n"
-                + "====================================";
-                
-        
-    }
-    
-    
-    
+
 }

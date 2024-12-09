@@ -37,15 +37,7 @@ public class Produtos extends Entidade {
         this.quantidade = quantidade;
     }
     
-    @Override
-    public String toString(){
-        return "Dados: " + getId() + "\n"
-                + "Nome: " + getNome() + "\n"
-                + "Preco: " + this.preco + "\n"
-                + "Marca: " + this.marca + "\n"
-                + "Quantidade: " + this.quantidade + "\n"
-                + "====================================";
-    }
+    
     
     
 }
