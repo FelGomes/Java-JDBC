@@ -13,6 +13,7 @@ import java.sql.SQLException;
  *
  * @author felipe Ferreira, Carlos Eduardo, Caua Alvarenga, Heitor Messias
  * @since 08/12/2024 at 20:55
+ * @see Entidade
  */
 public class Cidade extends Entidade {
     
@@ -144,9 +145,9 @@ public class Cidade extends Entidade {
             rset = pstm.executeQuery();
             
             while (rset.next()) {
-                System.out.println(rset.getInt("id"));
-                System.out.println(rset.getString("uf"));
-                System.out.println(rset.getString("nome"));
+                System.out.println(rset.getInt("cidade_id"));
+                System.out.println(rset.getString("cidade_uf"));
+                System.out.println(rset.getString("cidade_nome"));
                 System.out.println("======================");
             }
         } catch(SQLException e){

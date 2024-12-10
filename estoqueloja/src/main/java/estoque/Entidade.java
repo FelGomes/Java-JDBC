@@ -1,5 +1,9 @@
 package estoque;
-
+/**
+ * 
+ * @author felipe Ferreira
+ * @since 10/12/2025 at 15:32
+ */
 public class Entidade {
     
     

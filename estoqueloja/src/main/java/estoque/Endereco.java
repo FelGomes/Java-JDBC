@@ -5,6 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * 
+ * @author felipe Ferreira
+ * @since 10/12/2024 at 15:33
+ * @see Entidade
+ */
+
 public class Endereco extends Entidade {
 
     private String rua;
