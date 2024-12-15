@@ -17,7 +17,7 @@ public class Usuario extends Entidade{
     private int idade;
     
     public Usuario(int id, String nome, String sexo, String telefone, String cpf, int idade){
-        super(id, nome, telefone);
+        super(id,nome, telefone);
         this.sexo = sexo;
         this.cpf = cpf;
         this.idade = idade;
@@ -56,7 +56,7 @@ public class Usuario extends Entidade{
             stmt.setString(3, Usuario.super.getTelefone());
             stmt.setString(4, this.cpf);
             stmt.setInt(5, this.idade);
-            stmt.setInt(6, Usuario.super.getId());
+            //stmt.setInt(6, Usuario.super.getId());
           
             stmt.execute();
             stmt.close();
@@ -76,7 +76,7 @@ public class Usuario extends Entidade{
 
     public void remover(){
 
-        String sql = "DELETE FROM usuarios WHERE id = ?";
+        String sql = "DELETE FROM usuarios WHERE usuarios_id = ?";
         
         PreparedStatement pstm = null;
         
@@ -108,7 +108,7 @@ public class Usuario extends Entidade{
     
     public  void alterar(){
         
-        String sql = "UPDATE usuarios Set usuarios_nome = ?, usuarios_sexo = ?, usuarios_telefone = ?, usuarios_cpf = ?, usuarios_idade" + " WHERE id = ?";
+        String sql = "UPDATE usuarios Set usuarios_nome = ?, usuarios_sexo = ?, usuarios_telefone = ?, usuarios_cpf = ?, usuarios_idade" + " WHERE usuarios_id = ?";
         PreparedStatement pstm = null;
         
         try {
@@ -120,7 +120,7 @@ public class Usuario extends Entidade{
             pstm.setString(3, Usuario.super.getTelefone());
             pstm.setString(4, this.cpf);
             pstm.setInt(5, this.idade);
-            pstm.setInt(6, Usuario.super.getId());
+            //pstm.setInt(6, Usuario.super.getId());
             
             
             pstm.execute();
@@ -163,7 +163,7 @@ public class Usuario extends Entidade{
                 System.out.println(rset.getString("usuarios_nome"));
                 System.out.println(rset.getString("usuarios_sexo"));
                 System.out.println(rset.getString("usuarios_telefone"));
-                System.out.println(rset.getInt("usuarios_cpf"));
+                System.out.println(rset.getString("usuarios_cpf"));
                 System.out.println(rset.getInt("usuarios_idade"));
                 System.out.println("=============================================");
             }

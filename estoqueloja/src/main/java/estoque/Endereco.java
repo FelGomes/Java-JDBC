@@ -77,7 +77,7 @@ public class Endereco extends Entidade {
             stmt.setString(2, this.bairro);
             stmt.setString(3, this.cep);
             stmt.setString(4, this.numero);
-            stmt.setInt(5, Endereco.super.getId());
+            //stmt.setInt(5, Endereco.super.getId());
 
             stmt.execute();
             stmt.close();
