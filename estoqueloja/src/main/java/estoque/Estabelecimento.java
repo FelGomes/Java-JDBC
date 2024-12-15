@@ -143,7 +143,7 @@ public class Estabelecimento extends Entidade{
    
      public void listar(){
         
-        String sql = "SELECT * FROM cidade";
+        String sql = "SELECT * FROM estabelecimento";
         
         PreparedStatement pstm = null;
         ResultSet rset = null;

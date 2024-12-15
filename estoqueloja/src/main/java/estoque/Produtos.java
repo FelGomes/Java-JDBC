@@ -1,5 +1,16 @@
 package estoque;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+/**
+ * Classe Produtos
+ * @author felipe Ferreira Gomes
+ * @since 15/12/2024 at 15:!2
+ */
+
 public class Produtos extends Entidade {
     
     private float preco;
@@ -38,6 +49,151 @@ public class Produtos extends Entidade {
     }
     
     
+    /**
+     * Metodos para inserir valores na tabela produtos - Atributos: Nome, preco, marcas e quantidade
+     * @throws SQLException 
+     */
     
+    
+    
+     public void inserir() throws SQLException{
+        Connection conexao = new Conexao().getConexao();
+        String sql = "INSERT INTO produtos (produtos_nome, produtos_preco, produtos_marcas, produtos_qtd) Values (?, ?, ?, ?)";
+        
+        try {
+            PreparedStatement stmt;
+            stmt = conexao.prepareStatement(sql);
+            stmt.setString(1, Produtos.super.getNome());
+            stmt.setFloat(2, this.preco);
+            stmt.setString(3, this.marca);
+            stmt.setInt(4, this.quantidade);
+            stmt.setInt(5, Produtos.super.getId());
+          
+            stmt.execute();
+            stmt.close();
+            
+            conexao.close();
+            
+        } catch (SQLException e){
+            System.out.println("Erro ao inserir dados a tabela produtos " + e.getMessage());
+            
+        }
+        
+    }
+    
+    /**
+     * Metodo para remover os dados da tabela produtos ao escolher o ID
+     */
+
+    public void remover(){
+
+        String sql = "DELETE FROM estabelecimento WHERE id = ?";
+        
+        PreparedStatement pstm = null;
+        
+        try {
+             Connection conexao = new Conexao().getConexao();
+             
+             pstm = conexao.prepareStatement(sql);
+             pstm.setInt(1, Produtos.super.getId());
+             
+             pstm.execute();
+            
+        } catch (SQLException e){
+            System.out.println("Erro ao deletar os dados da tabela produtos" + e.getMessage());
+            
+        } finally {
+            try {
+                if (pstm != null){
+                    pstm.close();
+                }
+            } catch (SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    
+    /**
+     * Metodo para alterar os dados da tabela produtos - nome, preco, marcas e quantidade de produtos
+     */
+    
+    public  void alterar(){
+        
+        String sql = "UPDATE estabelecimento Set estabelecimento_nome = ?, estabelecimento_telefone = ?, estabelecimento_email = ?, estabelecimento_cnpj = ?" + " WHERE id = ?";
+        PreparedStatement pstm = null;
+        
+        try {
+            Connection conexao = new Conexao().getConexao();
+            
+            pstm = conexao.prepareStatement(sql);
+            pstm.setString(1, Produtos.super.getNome());
+            pstm.setFloat(2, this.preco);
+            pstm.setString(3, this.marca);
+            pstm.setInt(4, this.quantidade);
+            pstm.setInt(5, Produtos.super.getId());
+            
+            pstm.execute();
+            
+        } catch (SQLException e){
+            System.out.println("Erro ao alterar os dados da tabela Produtos! " + e.getMessage());
+        } finally {
+            try {
+                if (pstm != null){
+                    pstm.close();
+                }
+            } catch (SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }
+        
+        
+    }
+    
+    /**
+     * Metodo para listar todos os atributos da tabela Produtos
+     */
+   
+     public void listar(){
+        
+        String sql = "SELECT * FROM produtos";
+        
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
+        
+        try {
+            Connection conexao = new Conexao().getConexao();
+            
+            pstm = conexao.prepareStatement(sql);
+            
+            rset = pstm.executeQuery();
+            
+            while (rset.next()) {
+                System.out.println(rset.getInt("produtos_id"));
+                System.out.println(rset.getString("produtos_nome"));
+                System.out.println(rset.getFloat("produtos_preco"));
+                System.out.println(rset.getString("produtos_marcas"));
+                System.out.println(rset.getInt("produtos_qtd"));
+                System.out.println("=============================================");
+            }
+        } catch(SQLException e){
+            System.out.println("Erro ao listar os dados da tabela produtos " + e.getMessage());
+        } finally {
+            
+            try {
+                if (rset != null){
+                    rset.close();
+                    
+                }
+                if (pstm != null){
+                    pstm.close();
+                }
+            } catch(SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
     
 }
+    
+    
+
