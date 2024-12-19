@@ -30,7 +30,19 @@ public class App {
             System.out.println("09) Listagem");
             System.out.println("================================");
                    
-    }
+        }
+        
+        public static void tabelas(){
+            System.out.println("-------------------");
+            System.out.println("Cidades");
+            System.out.println("Estabelecimentos");
+            System.out.println("Fornecedores");
+            System.out.println("Produtos");
+            System.out.println("Usuarios");
+            System.out.println("Vendas");
+            System.out.println("-------------------");
+        }
+        
     public static void main(String[] args) {
         
        Scanner scan = new Scanner(System.in);
@@ -111,6 +123,15 @@ public class App {
                        }
                        
                        
+                    break;
+                    
+                case 9:
+                    System.out.println("====================================");
+                    System.out.println("              LISTAGEM              ");
+                    System.out.println("====================================");
+                    System.out.println("Deseja fazer a listagem de qual tabela?");
+                    
+                    opc = scan.nextLine().toLowerCase();
                     break;
                     
                 default:
