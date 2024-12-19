@@ -17,6 +17,10 @@ public class Estabelecimento extends Entidade{
     private String email;
     private String cnpj;
     
+    public Estabelecimento(String nome){
+       super(nome,""); 
+    }
+    
     public Estabelecimento(int id, String nome, String telefone, String email, String cnpj){
        super(nome,telefone); 
        this.cnpj = cnpj;

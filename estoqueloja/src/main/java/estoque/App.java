@@ -144,6 +144,8 @@ public class App {
                                 cidades.listar();
                                 break;
                             case 2:
+                                Estabelecimento estabelecimentos = new Estabelecimento("estabelecimento");
+                                estabelecimentos.listar();
                                 break;
                             case 3:
                                 break;
