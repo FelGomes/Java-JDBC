@@ -79,7 +79,7 @@ public class App {
                         }
 
                     } catch (Exception e){
-                        System.out.println("Dado errado inserido!");
+                        System.out.println("Erro na inserção de dados!");
                     }
                     break;
                 case 7:
