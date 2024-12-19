@@ -54,6 +54,8 @@ public class App {
        int id_Usu, id_Prod, id_For, id_Esta, id_End, id, id_cid, tabelaEsc;
        String opc;
        int opc_rem;
+       
+        menu();
         System.out.println("Deseja escolher qual opcao?");
         int escolha = scan.nextInt();
         scan.nextLine();
@@ -148,8 +150,11 @@ public class App {
                                 estabelecimentos.listar();
                                 break;
                             case 3:
+                                Fornecedores fornecedor = new Fornecedores("fornecedor");
+                                fornecedor.listar();
                                 break;
                             case 4:
+                                
                                 break;
                             case 5:
                                 break;
