@@ -16,8 +16,8 @@ public class Vendas extends Entidade {
     private String data;
     private int quantidade;
     
-    public Vendas (int id, String data, int quantidade){
-        super(id, "","");
+    public Vendas (String data, int quantidade){
+        super("","");
         this.data = data;
         this.quantidade = quantidade;
        
@@ -51,7 +51,7 @@ public class Vendas extends Entidade {
             stmt = conexao.prepareStatement(sql);
             stmt.setInt(1, this.quantidade);
             stmt.setString(2, this.data);
-            stmt.setInt(3, Vendas.super.getId());
+            //stmt.setInt(3, Vendas.super.getId());
             
             stmt.execute();
             stmt.close();
@@ -112,7 +112,7 @@ public class Vendas extends Entidade {
             pstm = conexao.prepareStatement(sql);
             pstm.setInt(1, this.quantidade);
             pstm.setString(2, this.data);
-            pstm.setInt(3, Vendas.super.getId());
+            //pstm.setInt(3, Vendas.super.getId());
             pstm.execute();
             
         } catch (SQLException e){

@@ -19,8 +19,8 @@ public class Endereco extends Entidade {
     private String cep;
     private String numero;
 
-    public Endereco(int id, String rua, String bairro, String cep, String numero) {
-        super(id, "", "");
+    public Endereco(String rua, String bairro, String cep, String numero) {
+        super("", "");
         this.rua = rua;
         this.bairro = bairro;
         this.cep = cep;
@@ -140,7 +140,7 @@ public class Endereco extends Entidade {
             pstm.setString(2, this.bairro);
             pstm.setString(3, this.cep);
             pstm.setString(4, this.numero);
-            pstm.setInt(5, Endereco.super.getId());
+            //pstm.setInt(5, Endereco.super.getId());
 
             pstm.execute();
 

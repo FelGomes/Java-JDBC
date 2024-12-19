@@ -17,8 +17,8 @@ public class Produtos extends Entidade {
     private String marca;
     private int quantidade;
 
-    public Produtos(int id, String nome, float preco, String marca, int quantidade) {
-        super(id, nome, "");
+    public Produtos(String nome, float preco, String marca, int quantidade) {
+        super(nome, "");
         this.preco = preco;
         this.marca = marca;
         this.quantidade = quantidade;
@@ -67,7 +67,7 @@ public class Produtos extends Entidade {
             stmt.setFloat(2, this.preco);
             stmt.setString(3, this.marca);
             stmt.setInt(4, this.quantidade);
-            stmt.setInt(5, Produtos.super.getId());
+            //stmt.setInt(5, Produtos.super.getId());
           
             stmt.execute();
             stmt.close();
@@ -130,7 +130,7 @@ public class Produtos extends Entidade {
             pstm.setFloat(2, this.preco);
             pstm.setString(3, this.marca);
             pstm.setInt(4, this.quantidade);
-            pstm.setInt(5, Produtos.super.getId());
+            //pstm.setInt(5, Produtos.super.getId());
             
             pstm.execute();
             

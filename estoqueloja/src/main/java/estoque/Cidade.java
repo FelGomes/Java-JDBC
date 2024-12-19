@@ -20,8 +20,8 @@ public class Cidade extends Entidade {
     private String nome;
     private String uf;
 
-    public Cidade(int id,String nome, String uf ) {
-        super(id, nome, "");
+    public Cidade(String nome, String uf ) {
+        super(nome, "");
         this.nome = nome;
         this.uf = uf;
     }
@@ -48,7 +48,7 @@ public class Cidade extends Entidade {
             stmt = conexao.prepareStatement(sql);
             stmt.setString(1, this.uf);
             stmt.setString(2,this.nome);
-            stmt.setInt(3, Cidade.super.getId());
+            //stmt.setInt(3, Cidade.super.getId());
             
             stmt.execute();
             stmt.close();
@@ -107,7 +107,7 @@ public class Cidade extends Entidade {
             pstm = conexao.prepareStatement(sql);
             pstm.setString(1,this.uf);
             pstm.setString(2, this.nome);
-            pstm.setInt(3, Cidade.super.getId());
+            //pstm.setInt(3, Cidade.super.getId());
             
             pstm.execute();
             

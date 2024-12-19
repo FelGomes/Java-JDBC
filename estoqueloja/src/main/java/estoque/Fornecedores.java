@@ -16,8 +16,8 @@ public class Fornecedores extends Entidade {
     private String razaoSocial;
     private String cnpj;
 
-    public Fornecedores( int id, String nome, String telefone, String razaoSocial, String cnpj) {
-        super(id, nome, telefone);
+    public Fornecedores(String nome, String telefone, String razaoSocial, String cnpj) {
+        super(nome, telefone);
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
     }
@@ -54,7 +54,7 @@ public class Fornecedores extends Entidade {
             stmt.setString(2, Fornecedores.super.getTelefone());
             stmt.setString(3, this.getRazaoSocial());
             stmt.setString(4, this.getCnpj());
-            stmt.setInt(5, Fornecedores.super.getId());
+            //stmt.setInt(5, Fornecedores.super.getId());
             
             stmt.execute();
             stmt.close();
@@ -117,7 +117,7 @@ public class Fornecedores extends Entidade {
             pstm.setString(2, Fornecedores.super.getTelefone());
             pstm.setString(3, this.razaoSocial);
             pstm.setString(4, this.cnpj);
-            pstm.setInt(5, Fornecedores.super.getId());
+            //stm.setInt(5, Fornecedores.super.getId());
             
             pstm.execute();
             

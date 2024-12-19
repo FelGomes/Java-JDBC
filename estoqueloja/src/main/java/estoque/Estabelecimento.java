@@ -18,7 +18,7 @@ public class Estabelecimento extends Entidade{
     private String cnpj;
     
     public Estabelecimento(int id, String nome, String telefone, String email, String cnpj){
-       super(id,nome,telefone); 
+       super(nome,telefone); 
        this.cnpj = cnpj;
        this.email = email;
     }
@@ -55,7 +55,7 @@ public class Estabelecimento extends Entidade{
             stmt.setString(2, Estabelecimento.super.getTelefone());
             stmt.setString(3, this.email);
             stmt.setString (4, this.cnpj);
-            stmt.setInt(4, Estabelecimento.super.getId());
+            //stmt.setInt(4, Estabelecimento.super.getId());
             
             stmt.execute();
             stmt.close();
@@ -118,7 +118,7 @@ public class Estabelecimento extends Entidade{
             pstm.setString(2, Estabelecimento.super.getTelefone());
             pstm.setString(3, this.email);
             pstm.setString(4, this.cnpj);
-            pstm.setInt(5, Estabelecimento.super.getId());
+            //pstm.setInt(5, Estabelecimento.super.getId());
             
             pstm.execute();
             

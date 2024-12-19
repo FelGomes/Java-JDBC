@@ -16,8 +16,8 @@ public class Usuario extends Entidade{
     private String cpf;
     private int idade;
     
-    public Usuario(int id, String nome, String sexo, String telefone, String cpf, int idade){
-        super(id,nome, telefone);
+    public Usuario(String nome, String sexo, String telefone, String cpf, int idade){
+        super(nome, telefone);
         this.sexo = sexo;
         this.cpf = cpf;
         this.idade = idade;

@@ -11,8 +11,7 @@ public class Entidade {
     private String nome;
     private String telefone;
     
-    public Entidade(int id, String nome, String telefone){
-        this.id = id;
+    public Entidade(String nome, String telefone){
         this.nome = nome;
         this.telefone = telefone;
     }
