@@ -19,12 +19,17 @@ public class Cidade extends Entidade {
     
     private String nome;
     private String uf;
+    
+    public Cidade(String nome){
+        super(nome, "");
+    }
 
     public Cidade(String nome, String uf ) {
         super(nome, "");
         this.nome = nome;
         this.uf = uf;
     }
+
 
    
 

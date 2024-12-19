@@ -34,12 +34,12 @@ public class App {
         
         public static void tabelas(){
             System.out.println("-------------------");
-            System.out.println("Cidades");
-            System.out.println("Estabelecimentos");
-            System.out.println("Fornecedores");
-            System.out.println("Produtos");
-            System.out.println("Usuarios");
-            System.out.println("Vendas");
+            System.out.println("1 - Cidades");
+            System.out.println("2 - Estabelecimentos");
+            System.out.println("3 - Fornecedores");
+            System.out.println("4 - Produtos");
+            System.out.println("5 - Usuarios");
+            System.out.println("6 - Vendas");
             System.out.println("-------------------");
         }
         
@@ -51,7 +51,7 @@ public class App {
        String nome, sexo, telefone, cpf;
        int idade;
        //variaveis para usuarios
-       int id_Usu, id_Prod, id_For, id_Esta, id_End, id, id_cid;
+       int id_Usu, id_Prod, id_For, id_Esta, id_End, id, id_cid, tabelaEsc;
        String opc;
        int opc_rem;
         System.out.println("Deseja escolher qual opcao?");
@@ -129,9 +129,45 @@ public class App {
                     System.out.println("====================================");
                     System.out.println("              LISTAGEM              ");
                     System.out.println("====================================");
-                    System.out.println("Deseja fazer a listagem de qual tabela?");
+                    System.out.println("Deseja fazer uma listagem?");
                     
                     opc = scan.nextLine().toLowerCase();
+                    
+                    while(opc.equals("sim") || opc.equals("s")){
+                        System.out.println("Deseja fazer a listagem de qual tabela?");
+                        tabelas();
+                        
+                        tabelaEsc = scan.nextInt();
+                        switch(tabelaEsc){
+                            case 1:
+                                Cidade cidades = new Cidade("cidade");
+                                cidades.listar();
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            case 4:
+                                break;
+                            case 5:
+                                break;
+                            case 6:
+                                break;
+                            default:
+                                System.out.println("Numero de tabela errado");
+                                break;
+                                
+                        }
+                        
+                        System.out.println("Deseja fazer outra listagem?");
+                        opc = scan.nextLine().toLowerCase();
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
                     break;
                     
                 default:
