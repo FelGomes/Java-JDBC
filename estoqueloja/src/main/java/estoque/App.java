@@ -40,7 +40,7 @@ public class App {
        //variaveis para usuarios
        int id_Usu, id_Prod, id_For, id_Esta, id_End, id, id_cid;
        String opc;
-       
+       int opc_rem;
         System.out.println("Deseja escolher qual opcao?");
         int escolha = scan.nextInt();
         scan.nextLine();
@@ -49,6 +49,9 @@ public class App {
             switch(escolha){
                 case 1:
                     try{
+                        System.out.println("====================================");
+                        System.out.println("              USUARIO               ");
+                        System.out.println("====================================");
                         System.out.println("Deseja fazer o cadastro do usuario?");
                         opc = scan.nextLine().toLowerCase();
                         
@@ -63,6 +66,10 @@ public class App {
                             cpf = scan.nextLine();
                             System.out.println("Informe sua idade:");
                             idade = scan.nextInt();
+                            if (idade <= 0){
+                                System.out.println("Idade invalida!");
+                                break;
+                            }
                             Usuario usu = new Usuario(nome, sexo, telefone, cpf, idade);
                             usu.inserir();
                             
@@ -73,6 +80,36 @@ public class App {
                     } catch (Exception e){
                         System.out.println("Dado errado inserido!");
                     }
+                    break;
+                case 7:
+                       System.out.println("====================================");
+                       System.out.println("              REMOCAO               ");
+                       System.out.println("====================================");
+                       System.out.println("Deseja remover valor de alguma tabela?");
+                       opc = scan.nextLine().toLowerCase();
+                       
+                       while(opc.equals("sim")|| opc.equals('s')){
+                           System.out.println("========================");
+                           System.out.println("1 - Usuario");
+                           System.out.println("2 - Cidade");
+                           System.out.println("3 - Produtos");
+                           System.out.println("4 - Estabelecimento");
+                           System.out.println("5 - Fornecedores");
+                           System.out.println("6 - Endereco");
+                           System.out.println("========================");
+                           System.out.println("Deseja fazer remoção de qual tabela");
+                           opc_rem = scan.nextInt();
+                           switch(opc_rem){
+                               case 1:
+
+                           }
+                           
+                       }
+                       
+                       
+                    break;
+                    
+                default:
                     break;
                    
             }
