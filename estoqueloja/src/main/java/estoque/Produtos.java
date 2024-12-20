@@ -122,9 +122,9 @@ public class Produtos extends Entidade {
      * Metodo para alterar os dados da tabela produtos - nome, preco, marcas e quantidade de produtos
      */
     
-    public  void alterar(){
+    public  void alterar(int idSelecionado){
         
-        String sql = "UPDATE estabelecimento Set estabelecimento_nome = ?, estabelecimento_telefone = ?, estabelecimento_email = ?, estabelecimento_cnpj = ?" + " WHERE id = ?";
+        String sql = "UPDATE produtos Set produtos_nome = ?, produtos_preco = ?, produtos_marcas = ?, produtos_qtd = ?" + " WHERE id = ?";
         PreparedStatement pstm = null;
         
         try {
@@ -135,7 +135,7 @@ public class Produtos extends Entidade {
             pstm.setFloat(2, this.preco);
             pstm.setString(3, this.marca);
             pstm.setInt(4, this.quantidade);
-            //pstm.setInt(5, Produtos.super.getId());
+            pstm.setInt(5, idSelecionado);
             
             pstm.execute();
             
