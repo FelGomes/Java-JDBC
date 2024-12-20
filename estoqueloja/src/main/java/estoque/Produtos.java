@@ -172,11 +172,11 @@ public class Produtos extends Entidade {
             rset = pstm.executeQuery();
             
             while (rset.next()) {
-                System.out.println(rset.getInt("produtos_id"));
-                System.out.println(rset.getString("produtos_nome"));
-                System.out.println(rset.getFloat("produtos_preco"));
-                System.out.println(rset.getString("produtos_marcas"));
-                System.out.println(rset.getInt("produtos_qtd"));
+                System.out.println("ID: " +rset.getInt("produtos_id"));
+                System.out.println("Nome: " +rset.getString("produtos_nome"));
+                System.out.println("Valor: " +rset.getFloat("produtos_preco"));
+                System.out.println("Marca: " +rset.getString("produtos_marcas"));
+                System.out.println("Qunatidade: " +rset.getInt("produtos_qtd"));
                 System.out.println("=============================================");
             }
         } catch(SQLException e){

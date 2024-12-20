@@ -163,12 +163,12 @@ public class Usuario extends Entidade{
             rset = pstm.executeQuery();
             
             while (rset.next()) {
-                System.out.println(rset.getInt("usuarios_id"));
-                System.out.println(rset.getString("usuarios_nome"));
-                System.out.println(rset.getString("usuarios_sexo"));
-                System.out.println(rset.getString("usuarios_telefone"));
-                System.out.println(rset.getString("usuarios_cpf"));
-                System.out.println(rset.getInt("usuarios_idade"));
+                System.out.println("Id: "+ rset.getInt("usuarios_id"));
+                System.out.println("Nome: "+ rset.getString("usuarios_nome"));
+                System.out.println("Sexo: " + rset.getString("usuarios_sexo"));
+                System.out.println("Telefone: " +rset.getString("usuarios_telefone"));
+                System.out.println("Cpf: " +rset.getString("usuarios_cpf"));
+                System.out.println("Idade: " +rset.getInt("usuarios_idade"));
                 System.out.println("=============================================");
             }
         } catch(SQLException e){

@@ -150,9 +150,9 @@ public class Cidade extends Entidade {
             rset = pstm.executeQuery();
             
             while (rset.next()) {
-                System.out.println(rset.getInt("cidade_id"));
-                System.out.println(rset.getString("cidade_uf"));
-                System.out.println(rset.getString("cidade_nome"));
+                System.out.println("ID: " +rset.getInt("cidade_id"));
+                System.out.println("UF: " +rset.getString("cidade_uf"));
+                System.out.println("Nome " +rset.getString("cidade_nome"));
                 System.out.println("======================");
             }
         } catch(SQLException e){

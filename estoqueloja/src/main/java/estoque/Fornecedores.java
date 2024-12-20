@@ -160,11 +160,11 @@ public class Fornecedores extends Entidade {
             rset = pstm.executeQuery();
             
             while (rset.next()) {
-                System.out.println(rset.getInt("fornecedores_id"));
-                System.out.println(rset.getString("fornecedores_nome"));
-                System.out.println(rset.getString("fornecedores_telefone"));
-                System.out.println(rset.getString("fornecedores_razaoSocial"));
-                System.out.println(rset.getString("fornecedores_cnpj"));
+                System.out.println("ID: " +rset.getInt("fornecedores_id"));
+                System.out.println("Nome: " +rset.getString("fornecedores_nome"));
+                System.out.println("Telefone: " +rset.getString("fornecedores_telefone"));
+                System.out.println("Razao Social: " +rset.getString("fornecedores_razaoSocial"));
+                System.out.println("CNPJ: " +rset.getString("fornecedores_cnpj"));
                 System.out.println("=============================================");
             }
         } catch(SQLException e){

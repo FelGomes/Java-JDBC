@@ -160,11 +160,11 @@ public class Estabelecimento extends Entidade{
             rset = pstm.executeQuery();
             
             while (rset.next()) {
-                System.out.println(rset.getInt("estabelecimento_id"));
-                System.out.println(rset.getString("estabelecimento_nome"));
-                System.out.println(rset.getString("estabelecimento_telefone"));
-                System.out.println(rset.getString("estabelecimento_email"));
-                System.out.println(rset.getString("estabelecimento_cnpj"));
+                System.out.println("ID: "+ rset.getInt("estabelecimento_id"));
+                System.out.println("Nome: "+ rset.getString("estabelecimento_nome"));
+                System.out.println("Telefone: "+ rset.getString("estabelecimento_telefone"));
+                System.out.println("Email: " +rset.getString("estabelecimento_email"));
+                System.out.println("CNPJ: " +rset.getString("estabelecimento_cnpj"));
                 System.out.println("=============================================");
             }
         } catch(SQLException e){

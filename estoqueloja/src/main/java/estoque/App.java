@@ -177,9 +177,10 @@ public class App {
                                 break;
                                 
                         }
-                        
+                        scan.nextLine();
                         System.out.println("Deseja fazer outra listagem?");
                         opc = scan.nextLine().toLowerCase();
+                        
                     }
                     
                     

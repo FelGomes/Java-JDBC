@@ -176,11 +176,11 @@ public class Endereco extends Entidade {
             rset = pstm.executeQuery();
 
             while (rset.next()) {
-                System.out.println(rset.getInt("endereco_id"));
-                System.out.println(rset.getString("endereco_rua"));
-                System.out.println(rset.getString("endereco_bairro"));
-                System.out.println(rset.getString("endereco_cep"));
-                System.out.println(rset.getString("endereco_numero"));
+                System.out.println("Id: "+ rset.getInt("endereco_id"));
+                System.out.println("Rua: "+ rset.getString("endereco_rua"));
+                System.out.println("Bairro: "+ rset.getString("endereco_bairro"));
+                System.out.println("CEP: "+ rset.getString("endereco_cep"));
+                System.out.println("Numero: " +rset.getString("endereco_numero"));
                 System.out.println("====================================");
             }
         } catch (SQLException e) {
