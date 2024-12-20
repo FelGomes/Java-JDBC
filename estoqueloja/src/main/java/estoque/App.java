@@ -52,6 +52,11 @@ public class App {
        int idade;
        //variaveis para usuarios
        
+       int qtd;
+       float preco;
+       String marca;
+       // variaveis para produtos
+       
        String nome_fantasia, cnpj_forn;
        int id_Usu, id_Prod, id_For, id_Esta, id_End, id, id_cid, tabelaEsc;
        String opc;
@@ -126,6 +131,40 @@ public class App {
                         opc = scan.nextLine().toLowerCase();
                         
                     }
+                    break;
+                case 3:
+                    System.out.println("====================================");
+                    System.out.println("              PRODUTOS              ");
+                    System.out.println("====================================");
+                    System.out.println("Deseja fazer o cadastro de Produtos?");
+                    opc = scan.nextLine().toLowerCase();
+                    
+                    while(opc.equals("sim") || opc.equals("s")){
+                        
+                        try {   
+                            System.out.println("Informe o nome do produto");
+                            nome = scan.nextLine();
+                            System.out.println("Informe a Marca do produto");
+                            marca = scan.nextLine();
+                            System.out.println("Informe a Quantidade desse produto no estoque");
+                            qtd = scan.nextInt();
+                            System.out.println("Informe o preço deste produto");
+                            preco = scan.nextFloat();
+                            
+                            Produtos produto = new Produtos(nome, preco, marca, qtd);
+                            
+                            produto.inserir();
+                        
+                        } catch (Exception e) {
+                            
+                        }
+                        
+                        
+                        
+                        
+                    }
+                    
+                    
                     break;
                 case 7:
                        System.out.println("====================================");

@@ -78,6 +78,7 @@ public class Produtos extends Entidade {
             
             conexao.close();
             
+            System.out.println("Produto inserido com sucesso no banco de dados!");
         } catch (SQLException e){
             System.out.println("Erro ao inserir dados a tabela produtos " + e.getMessage());
             
@@ -91,7 +92,7 @@ public class Produtos extends Entidade {
 
     public void remover(){
 
-        String sql = "DELETE FROM estabelecimento WHERE id = ?";
+        String sql = "DELETE FROM produtos WHERE id = ?";
         
         PreparedStatement pstm = null;
         
