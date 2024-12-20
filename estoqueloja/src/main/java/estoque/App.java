@@ -158,6 +158,8 @@ public class App {
                                 produtos.listar();
                                 break;
                             case 5:
+                                Usuario usu = new Usuario("usuario");
+                                usu.listar();
                                 break;
                             case 6:
                                 break;

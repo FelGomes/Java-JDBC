@@ -16,6 +16,10 @@ public class Usuario extends Entidade{
     private String cpf;
     private int idade;
     
+    public Usuario(String nome){
+        super(nome,"");
+    }
+    
     public Usuario(String nome, String sexo, String telefone, String cpf, int idade){
         super(nome, telefone);
         this.sexo = sexo;
