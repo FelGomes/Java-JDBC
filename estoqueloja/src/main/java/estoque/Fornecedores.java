@@ -15,6 +15,11 @@ public class Fornecedores extends Entidade {
     
     private String razaoSocial;
     private String cnpj;
+    
+    public Fornecedores(String nome) {
+        super(nome, "");
+        
+    }
 
     public Fornecedores(String nome, String telefone, String razaoSocial, String cnpj) {
         super(nome, telefone);
