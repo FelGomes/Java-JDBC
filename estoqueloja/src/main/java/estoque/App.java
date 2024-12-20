@@ -224,14 +224,24 @@ public class App {
                            opc_rem = scan.nextInt();
                            switch(opc_rem){
                                case 1:
+                                   // fazer listagem de todos os usuarios para encontrar o id desejado a excluir
+                                   // pedir o id selecionado e colocar ele como parametro no metodo remover() dessa maneira "usu.remover(idSelecionado)"
                                    break;
                                case 2:
+                                   // fazer listagem de todos as cidades para encontrar o id desejado a excluir
+                                   // pedir o id selecionado e colocar ele como parametro no metodo remover() dessa maneira "cidades.remover(idSelecionado)"
                                    break;
                                case 3:
+                                   // fazer listagem de todos os produtos para encontrar o id desejado a excluir
+                                   // pedir o id selecionado e colocar ele como parametro no metodo remover() dessa maneira "produtos.remover(idSelecionado)"
                                    break;
                                case 4:
+                                   // fazer listagem de todos os estabelecimentos para encontrar o id desejado a excluir
+                                   // pedir o id selecionado e colocar ele como parametro no metodo remover() dessa maneira "estabelecimentos.remover(idSelecionado)"
                                    break;
                                case 5:
+                                   // fazer listagem de todos os fornecedores para encontrar o id desejado a excluir
+                                   // pedir o id selecionado e colocar ele como parametro no metodo remover() dessa maneira "fornecedores.remover(idSelecionado)"
                                    break;
                                default:   
                                    System.out.println("Numero errado!");
