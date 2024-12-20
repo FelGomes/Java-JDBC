@@ -21,7 +21,7 @@ public class Estabelecimento extends Entidade{
        super(nome,""); 
     }
     
-    public Estabelecimento(int id, String nome, String telefone, String email, String cnpj){
+    public Estabelecimento(String nome, String telefone, String email, String cnpj){
        super(nome,telefone); 
        this.cnpj = cnpj;
        this.email = email;
@@ -65,7 +65,7 @@ public class Estabelecimento extends Entidade{
             stmt.close();
             
             conexao.close();
-            
+            System.out.println("Estabelecimento inserido no banco de dados com sucesso");
         } catch (SQLException e){
             System.out.println("Erro ao inserir dados a tabela estabelecimento! " + e.getMessage());
             

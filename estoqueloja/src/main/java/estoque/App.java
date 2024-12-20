@@ -57,6 +57,9 @@ public class App {
        String marca;
        // variaveis para produtos
        
+       String email, cnpj;
+       // variaveis para estabelecimentos
+       
        String nome_fantasia, cnpj_forn;
        int id_Usu, id_Prod, id_For, id_Esta, id_End, id, id_cid, tabelaEsc;
        String opc;
@@ -148,6 +151,7 @@ public class App {
                             marca = scan.nextLine();
                             System.out.println("Informe a Quantidade desse produto no estoque");
                             qtd = scan.nextInt();
+                            scan.nextLine();
                             System.out.println("Informe o preço deste produto");
                             preco = scan.nextFloat();
                             
@@ -156,16 +160,51 @@ public class App {
                             produto.inserir();
                         
                         } catch (Exception e) {
-                            
+                            System.out.println("Erro na inserção de dados!");  
                         }
-                        
-                        
-                        
-                        
+                        scan.nextLine();  
+                        System.out.println("Deseja cadastrar outro produto?");
+                        opc = scan.nextLine().toLowerCase();
                     }
                     
                     
                     break;
+                case 4:
+                    System.out.println("====================================");
+                    System.out.println("          ESTABELECIMENTOS          ");
+                    System.out.println("====================================");
+                    System.out.println("Deseja fazer o cadastro de algum estabelecimento?");
+                    opc = scan.nextLine().toLowerCase();
+                    
+                    while(opc.equals("sim") || opc.equals("s")){
+                        
+                        try {
+                            System.out.println("Informe o nome fantasia do Estabelecimento");
+                            nome_fantasia = scan.nextLine();
+                            System.out.println("Informe o telefone do Estabelecimento");
+                            telefone = scan.nextLine();
+                            System.out.println("Informe o endereço eletronico do Estabelecimento (email)");
+                            email =  scan.nextLine();
+                            System.out.println("Informe o CNPJ/CPF do estabelecimento");
+                            cnpj = scan.nextLine();
+                            
+                            Estabelecimento estabelecimento = new Estabelecimento(nome_fantasia, telefone, email, cnpj);
+                            
+                            estabelecimento.inserir();
+                            
+                            
+                        } catch (Exception e) {
+                            System.out.println("Erro na inserção de dados");
+                        }
+
+                        scan.nextLine();
+                        System.out.println("Deseja fazer o cadastro de outro estabelecimento?");
+                        opc = scan.nextLine().toLowerCase();
+                    }
+                    
+                    
+                    break;
+                    
                 case 7:
                        System.out.println("====================================");
                        System.out.println("              REMOCAO               ");
