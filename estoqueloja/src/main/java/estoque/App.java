@@ -110,18 +110,27 @@ public class App {
                            System.out.println("3 - Produtos");
                            System.out.println("4 - Estabelecimento");
                            System.out.println("5 - Fornecedores");
-                           System.out.println("6 - Endereco");
                            System.out.println("========================");
                            System.out.println("Deseja fazer remoção de qual tabela");
                            opc_rem = scan.nextInt();
                            switch(opc_rem){
                                case 1:
                                    break;
-                                   
-                                   
-
+                               case 2:
+                                   break;
+                               case 3:
+                                   break;
+                               case 4:
+                                   break;
+                               case 5:
+                                   break;
+                               default:   
+                                   System.out.println("Numero errado!");
+                                   break;
                            }
                            
+                           System.out.println("Deseja remover valor de outra tabela?");
+                           opc = scan.nextLine().toLowerCase();
                        }
                        
                        
