@@ -212,7 +212,7 @@ public class App {
                        System.out.println("Deseja remover valor de alguma tabela?");
                        opc = scan.nextLine().toLowerCase();
                        
-                       while(opc.equals("sim")|| opc.equals('s')){
+                       while(opc.equals("sim")|| opc.equals("s")){
                            System.out.println("========================");
                            System.out.println("1 - Usuario");
                            System.out.println("2 - Cidade");
