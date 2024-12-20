@@ -154,7 +154,8 @@ public class App {
                                 fornecedor.listar();
                                 break;
                             case 4:
-                                
+                                Produtos produtos = new Produtos("Produtos");
+                                produtos.listar();
                                 break;
                             case 5:
                                 break;

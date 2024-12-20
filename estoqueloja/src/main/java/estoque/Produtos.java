@@ -16,6 +16,10 @@ public class Produtos extends Entidade {
     private float preco;
     private String marca;
     private int quantidade;
+    
+    public Produtos(String nome){
+        super(nome, "");
+    }
 
     public Produtos(String nome, float preco, String marca, int quantidade) {
         super(nome, "");
