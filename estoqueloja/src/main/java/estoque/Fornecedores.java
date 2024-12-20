@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 public class Fornecedores extends Entidade {
     
-    private String razaoSocial;
+    private String nomeFantasia;
     private String cnpj;
     
     public Fornecedores(String nome) {
@@ -21,19 +21,19 @@ public class Fornecedores extends Entidade {
         
     }
 
-    public Fornecedores(String nome, String telefone, String razaoSocial, String cnpj) {
+    public Fornecedores(String nome, String telefone, String nomeFantasia, String cnpj) {
         super(nome, telefone);
-        this.razaoSocial = razaoSocial;
+        this.nomeFantasia = nomeFantasia;
         this.cnpj = cnpj;
     }
     
    
     public String getRazaoSocial() {
-        return razaoSocial;
+        return nomeFantasia;
     }
 
-    public void setRazaoSocial(String razaoSocial) {
-        this.razaoSocial = razaoSocial;
+    public void setnomeFantasia(String nomeFantasia) {
+        this.nomeFantasia = nomeFantasia;
     }
 
     public String getCnpj() {
@@ -50,14 +50,14 @@ public class Fornecedores extends Entidade {
      */
      public void inserir() throws SQLException{
         Connection conexao = new Conexao().getConexao();
-        String sql = "INSERT INTO fornecedores (fornecedores_nome, fornecedores_telefone, fornecedores_razaoSocial, fornecedores_cnpj) Values (?, ?, ?, ?)";
+        String sql = "INSERT INTO fornecedores (fornecedores_nome, fornecedores_telefone, fornecedores_nomeFantasia, fornecedores_cnpj) Values (?, ?, ?, ?)";
         
         try {
             PreparedStatement stmt;
             stmt = conexao.prepareStatement(sql);
             stmt.setString(1,Fornecedores.super.getNome());
             stmt.setString(2, Fornecedores.super.getTelefone());
-            stmt.setString(3, this.getRazaoSocial());
+            stmt.setString(3, this.nomeFantasia);
             stmt.setString(4, this.getCnpj());
             //stmt.setInt(5, Fornecedores.super.getId());
             
@@ -111,7 +111,7 @@ public class Fornecedores extends Entidade {
     
     public  void alterar(){
         
-        String sql = "UPDATE fornecedores Set fornecedores_nome = ?, fornecedores_telefone = ?, fornecedores_razaoSocial = ?, fornecedores_cnpj = ?" + " WHERE id = ?";
+        String sql = "UPDATE fornecedores Set fornecedores_nome = ?, fornecedores_telefone = ?, fornecedores_nomeFantasia = ?, fornecedores_cnpj = ?" + " WHERE id = ?";
         PreparedStatement pstm = null;
         
         try {
@@ -120,7 +120,7 @@ public class Fornecedores extends Entidade {
             pstm = conexao.prepareStatement(sql);
             pstm.setString(1, Fornecedores.super.getNome());
             pstm.setString(2, Fornecedores.super.getTelefone());
-            pstm.setString(3, this.razaoSocial);
+            pstm.setString(3, this.nomeFantasia);
             pstm.setString(4, this.cnpj);
             //stm.setInt(5, Fornecedores.super.getId());
             
@@ -163,7 +163,7 @@ public class Fornecedores extends Entidade {
                 System.out.println("ID: " +rset.getInt("fornecedores_id"));
                 System.out.println("Nome: " +rset.getString("fornecedores_nome"));
                 System.out.println("Telefone: " +rset.getString("fornecedores_telefone"));
-                System.out.println("Razao Social: " +rset.getString("fornecedores_razaoSocial"));
+                System.out.println("Nome Fantasia: " +rset.getString("fornecedores_nomeFantasia"));
                 System.out.println("CNPJ: " +rset.getString("fornecedores_cnpj"));
                 System.out.println("=============================================");
             }

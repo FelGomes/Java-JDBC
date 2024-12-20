@@ -51,6 +51,8 @@ public class App {
        String nome, sexo, telefone, cpf;
        int idade;
        //variaveis para usuarios
+       
+       String nome_fantasia, cnpj_forn;
        int id_Usu, id_Prod, id_For, id_Esta, id_End, id, id_cid, tabelaEsc;
        String opc;
        int opc_rem;
@@ -94,6 +96,35 @@ public class App {
 
                     } catch (Exception e){
                         System.out.println("Erro na inserção de dados!");
+                    }
+                    break;
+                case 2:
+                    System.out.println("====================================");
+                    System.out.println("            FORNECEDORES            ");
+                    System.out.println("====================================");
+                    System.out.println("Deseja fazer o cadastro de fornecedores?");
+                    opc = scan.nextLine().toLowerCase();
+                    
+                    while(opc.equals("sim") || opc.equals("s")){
+                        try{
+                            System.out.println("Informe seu nome: ");
+                            nome = scan.nextLine();
+                            System.out.println("Informe o telefone: ");
+                            telefone = scan.nextLine();
+                            System.out.println("Informe o nome fantasia: ");
+                            nome_fantasia = scan.nextLine();
+                            System.out.println("Informe o CNPJ: ");
+                            cnpj_forn = scan.nextLine();
+                            Fornecedores fornecedores = new Fornecedores(nome,telefone,nome_fantasia,cnpj_forn);
+                            fornecedores.inserir();
+                            
+                        } catch(Exception e){
+                            System.out.println("Erro na insercao de dados! ");
+                        }
+                        scan.nextLine();
+                        System.out.println("Deseja fazer outro cadastro para fornecedores?");
+                        opc = scan.nextLine().toLowerCase();
+                        
                     }
                     break;
                 case 7:
