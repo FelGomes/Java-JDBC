@@ -77,7 +77,7 @@ public class Estabelecimento extends Entidade{
      * Metodo para remover os dados da tabela estabelecimento ao escolher o ID
      */
 
-    public void remover(){
+    public void remover(int idSelecionado){
 
         String sql = "DELETE FROM estabelecimento WHERE id = ?";
         
@@ -87,7 +87,7 @@ public class Estabelecimento extends Entidade{
              Connection conexao = new Conexao().getConexao();
              
              pstm = conexao.prepareStatement(sql);
-             pstm.setInt(1, Estabelecimento.super.getId());
+             pstm.setInt(1, idSelecionado);
              
              pstm.execute();
             

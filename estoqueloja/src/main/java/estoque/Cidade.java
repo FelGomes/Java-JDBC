@@ -70,7 +70,7 @@ public class Cidade extends Entidade {
      * Metodo para remover os dados da tabela cidade 
      */
     
-    public void remover(){
+    public void remover(int idSelecionado){
 
         String sql = "DELETE FROM cidade WHERE id = ?";
         
@@ -80,7 +80,7 @@ public class Cidade extends Entidade {
              Connection conexao = new Conexao().getConexao();
              
              pstm = conexao.prepareStatement(sql);
-             pstm.setInt(1, Cidade.super.getId());
+             pstm.setInt(1, idSelecionado);
              
              pstm.execute();
             

@@ -95,7 +95,7 @@ public class Endereco extends Entidade {
      * Metodo para remover todos os daods da tabela endereco quando especificar
      * o ID
      */
-    public void remover() {
+    public void remover(int idSelecionado) {
 
         String sql = "DELETE FROM cidade WHERE id = ?";
 
@@ -105,7 +105,7 @@ public class Endereco extends Entidade {
             Connection conexao = new Conexao().getConexao();
 
             pstm = conexao.prepareStatement(sql);
-            pstm.setInt(1, Endereco.super.getId());
+            pstm.setInt(1, idSelecionado);
 
             pstm.execute();
 

@@ -90,7 +90,7 @@ public class Produtos extends Entidade {
      * Metodo para remover os dados da tabela produtos ao escolher o ID
      */
 
-    public void remover(){
+    public void remover(int idSelecionado){
 
         String sql = "DELETE FROM produtos WHERE id = ?";
         
@@ -100,7 +100,7 @@ public class Produtos extends Entidade {
              Connection conexao = new Conexao().getConexao();
              
              pstm = conexao.prepareStatement(sql);
-             pstm.setInt(1, Produtos.super.getId());
+             pstm.setInt(1, idSelecionado);
              
              pstm.execute();
             

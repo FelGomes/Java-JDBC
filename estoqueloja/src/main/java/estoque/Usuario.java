@@ -78,7 +78,7 @@ public class Usuario extends Entidade{
      * Metodo para remover os dados da tabela usuarios ao escolher o ID
      */
 
-    public void remover(){
+    public void remover(int idSelecionado){
 
         String sql = "DELETE FROM usuarios WHERE usuarios_id = ?";
         
@@ -88,7 +88,7 @@ public class Usuario extends Entidade{
              Connection conexao = new Conexao().getConexao();
              
              pstm = conexao.prepareStatement(sql);
-             pstm.setInt(1, Usuario.super.getId());
+             pstm.setInt(1, idSelecionado);
              
              pstm.execute();
             
