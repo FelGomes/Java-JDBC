@@ -76,6 +76,7 @@ public class Usuario extends Entidade{
     
     /**
      * Metodo para remover os dados da tabela usuarios ao escolher o ID
+     * @param idSelecionado
      */
 
     public void remover(int idSelecionado){

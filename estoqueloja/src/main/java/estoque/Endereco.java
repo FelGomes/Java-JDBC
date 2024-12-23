@@ -94,6 +94,7 @@ public class Endereco extends Entidade {
     /**
      * Metodo para remover todos os daods da tabela endereco quando especificar
      * o ID
+     * @param idSelecionado
      */
     public void remover(int idSelecionado) {
 

@@ -75,6 +75,7 @@ public class Fornecedores extends Entidade {
     
     /**
      * Metodo para remover os dados da tabela fornecedores ao escolher o ID
+     * @param idSelecionado
      */
 
     public void remover(int idSelecionado){

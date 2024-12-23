@@ -88,6 +88,7 @@ public class Produtos extends Entidade {
     
     /**
      * Metodo para remover os dados da tabela produtos ao escolher o ID
+     * @param idSelecionado
      */
 
     public void remover(int idSelecionado){
@@ -120,6 +121,7 @@ public class Produtos extends Entidade {
     
     /**
      * Metodo para alterar os dados da tabela produtos - nome, preco, marcas e quantidade de produtos
+     * @param idSelecionado
      */
     
     public  void alterar(int idSelecionado){

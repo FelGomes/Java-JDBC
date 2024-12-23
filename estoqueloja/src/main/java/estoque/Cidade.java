@@ -68,6 +68,7 @@ public class Cidade extends Entidade {
     }
     /**
      * Metodo para remover os dados da tabela cidade 
+     * @param idSelecionado
      */
     
     public void remover(int idSelecionado){

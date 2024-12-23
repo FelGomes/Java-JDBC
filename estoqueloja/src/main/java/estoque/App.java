@@ -61,7 +61,6 @@ public class App {
        // variaveis para estabelecimentos
        
        String nome_fantasia, cnpj_forn;
-       int id_Usu, id_Prod, id_For, id_Esta, id_End, id, id_cid, tabelaEsc;
        String opc;
        int opc_rem;
        
@@ -267,7 +266,7 @@ public class App {
                         System.out.println("Deseja fazer a listagem de qual tabela?");
                         tabelas();
                         
-                        tabelaEsc = scan.nextInt();
+                        int tabelaEsc = scan.nextInt();
                         switch(tabelaEsc){
                             case 1:
                                 Cidade cidades = new Cidade("cidade");

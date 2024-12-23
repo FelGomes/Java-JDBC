@@ -75,6 +75,7 @@ public class Estabelecimento extends Entidade{
     
     /**
      * Metodo para remover os dados da tabela estabelecimento ao escolher o ID
+     * @param idSelecionado
      */
 
     public void remover(int idSelecionado){
