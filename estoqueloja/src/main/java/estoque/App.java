@@ -62,7 +62,8 @@ public class App {
        
        String nome_fantasia, cnpj_forn;
        String opc;
-       int opc_rem;
+       int opc_rem, id_remocao;
+       
        
         menu();
         System.out.println("Deseja escolher qual opcao?");
@@ -223,22 +224,90 @@ public class App {
                            opc_rem = scan.nextInt();
                            switch(opc_rem){
                                case 1:
+                                     Usuario usu = new Usuario("usuarios");
+                                     usu.listar();
+                                     System.out.println("Deseja fazer a exclusao de algum ID de usuario?");
+                                     opc = scan.nextLine().toLowerCase();
+                                     if (opc.equals("sim") || opc.equals("s")){
+                                        try{
+                                             System.out.println("Informe o ID que voce deseja remover: ");
+                                             id_remocao = scan.nextInt();
+                                             usu.remover(id_remocao);
+                                        } catch(Exception e){
+                                            System.out.println("Erro ao remover o id de usuario" + e.getMessage() + e.getLocalizedMessage());
+                                        }  
+                                     }
+                                         
                                    // fazer listagem de todos os usuarios para encontrar o id desejado a excluir
                                    // pedir o id selecionado e colocar ele como parametro no metodo remover() dessa maneira "usu.remover(idSelecionado)"
                                    break;
                                case 2:
+                                   Cidade cid = new Cidade("cidade");
+                                   cid.listar();
+                                   System.out.println("Deseja fazer a remocao de algum campo de ciade?");
+                                   opc = scan.nextLine().toLowerCase();
+                                   if (opc.equals("sim")|| opc.equals("s")){
+                                       try{
+                                           System.out.println("Informe o ID que deseja remover: ");
+                                           id_remocao = scan.nextInt();
+                                           cid.remover(id_remocao);
+                                        }  catch (Exception e){
+                                            System.out.println("Erro ao remover o id de cidade " + e.getMessage() + e.getLocalizedMessage());
+                                        } 
+                                   }
                                    // fazer listagem de todos as cidades para encontrar o id desejado a excluir
                                    // pedir o id selecionado e colocar ele como parametro no metodo remover() dessa maneira "cidades.remover(idSelecionado)"
                                    break;
                                case 3:
+                                   Produtos prod = new Produtos("produtos");
+                                   prod.listar();
+                                   System.out.println("Deseja fazer a remocao de algum campo de produtos? ");
+                                   opc = scan.nextLine().toLowerCase();
+                                   if (opc.equals("sim") || opc.equals("s")){
+                                       try {
+                                           System.out.println("Informe o ID que deseja remover: ");
+                                           id_remocao = scan.nextInt();
+                                           prod.remover(id_remocao);
+                                           
+                                       } catch(Exception e){
+                                           System.out.println("Erro ao remover o ID de produtos " + e.getMessage() + e.getLocalizedMessage());
+                                       }
+                                   }
                                    // fazer listagem de todos os produtos para encontrar o id desejado a excluir
                                    // pedir o id selecionado e colocar ele como parametro no metodo remover() dessa maneira "produtos.remover(idSelecionado)"
                                    break;
                                case 4:
+                                   Estabelecimento esta = new Estabelecimento("estabelecimento");
+                                   esta.listar();
+                                   System.out.println("Deseja fazer a remocao de algum ID?");
+                                   opc = scan.nextLine().toLowerCase();
+                                   if (opc.equals("sim")|| opc.equals("s")){
+                                       try {
+                                           System.out.println("Informe o ID que voce deseja remover: ");
+                                           id_remocao = scan.nextInt();
+                                           esta.remover(id_remocao);
+                                       } catch (Exception e) {
+                                           System.out.println("Erro ao remover Id de estabelecimento! " +e.getMessage() + e.getLocalizedMessage());
+                                       }
+                                   }
+                                   
                                    // fazer listagem de todos os estabelecimentos para encontrar o id desejado a excluir
                                    // pedir o id selecionado e colocar ele como parametro no metodo remover() dessa maneira "estabelecimentos.remover(idSelecionado)"
                                    break;
                                case 5:
+                                   Fornecedores forn = new Fornecedores("fornecedores");
+                                   forn.listar();
+                                   System.out.println("Deseja fazer a remocao de algum ID?");
+                                   opc = scan.nextLine();
+                                   if (opc.equals("sim")|| opc.equals("s")){
+                                       try {
+                                           System.out.println("Informe o ID que voce deseja remover: ");
+                                           id_remocao = scan.nextInt();
+                                           forn.remover(id_remocao);
+                                       } catch (Exception e) {
+                                           System.out.println("Erro ao remover o ID de fornecedores! " +e.getMessage() + e.getLocalizedMessage());
+                                       }
+                                   }
                                    // fazer listagem de todos os fornecedores para encontrar o id desejado a excluir
                                    // pedir o id selecionado e colocar ele como parametro no metodo remover() dessa maneira "fornecedores.remover(idSelecionado)"
                                    break;
