@@ -311,6 +311,38 @@ public class App {
                                    // fazer listagem de todos os fornecedores para encontrar o id desejado a excluir
                                    // pedir o id selecionado e colocar ele como parametro no metodo remover() dessa maneira "fornecedores.remover(idSelecionado)"
                                    break;
+                               case 6:
+                                   Endereco end = new Endereco("endereco");
+                                   end.listar();
+                                   System.out.println("Deseja fazer remocao de algum ID? ");
+                                   opc = scan.nextLine().toLowerCase();
+                                   if(opc.equals("sim") || opc.equals("s")){
+                                       try{
+                                           System.out.println("Deseja fazer remocao de qual ID? ");
+                                           id_remocao = scan.nextInt();
+                                           end.remover(id_remocao);
+                                       }catch(Exception e) {
+                                           System.out.println("Erro oa fazer a remocao da tabela endereco! " + e.getMessage() + e.getLocalizedMessage());
+                                       }
+
+                                       
+                                   }
+                               case 7:
+                                   Vendas vendas = new Vendas("vendas");
+                                   vendas.listar();
+                                   System.out.println("Deseja fazer a remocao de algum ID?");
+                                   opc = scan.nextLine().toLowerCase();
+                                   if(opc.equals("sim") || opc.equals("s")){
+                                       try {
+                                           System.out.println("Qual ID? ");
+                                           id_remocao = scan.nextInt();
+                                           vendas.remover();
+                                           
+                                       } catch (Exception e) {
+                                           System.out.println("Erro ao remover ID de vendas! " +e.getMessage() + e.getLocalizedMessage());
+                                       }
+                                   }
+                                   break;
                                default:   
                                    System.out.println("Numero errado!");
                                    break;

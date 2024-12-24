@@ -19,6 +19,9 @@ public class Endereco extends Entidade {
     private String cep;
     private String numero;
 
+    public Endereco(String nome){
+        super(nome, "");
+    }
     public Endereco(String rua, String bairro, String cep, String numero) {
         super("", "");
         this.rua = rua;
