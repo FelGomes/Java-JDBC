@@ -390,6 +390,11 @@ public class App {
                                 usu.listar();
                                 break;
                             case 6:
+                                Vendas vendas = new Vendas("vendas");
+                                vendas.listar();
+                            case 7:
+                                Endereco endereco = new Endereco("endereco");
+                                endereco.listar();
                                 break;
                             default:
                                 System.out.println("Numero de tabela errado");
