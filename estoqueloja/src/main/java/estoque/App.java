@@ -430,6 +430,36 @@ public class App {
                                 
                                 break;
                             case 3: 
+                                System.out.println("Listagem dos Fornecedores para localizar o ID!");
+                                Fornecedores fornecedor = new Fornecedores("fornecedor");
+                                fornecedor.listar();
+                                
+                                try {
+                                    try {
+                                        System.out.println("Digite o id a ser alterado!");
+                                        fornecedorEsc = scan.nextInt();
+                                        
+                                    } catch (Exception e) {
+                                        System.out.println("Digite um valor valido!");
+                                        break;
+                                    }
+                                    System.out.println("Informe seu nome: ");
+                                    nome = scan.nextLine();
+                                    System.out.println("Informe o telefone: ");
+                                    telefone = scan.nextLine();
+                                    System.out.println("Informe o nome fantasia: ");
+                                    nome_fantasia = scan.nextLine();
+                                    System.out.println("Informe o CNPJ: ");
+                                    cnpj_forn = scan.nextLine();
+                                    Fornecedores forn = new Fornecedores(nome,telefone,nome_fantasia,cnpj_forn);
+                                    
+                                    forn.alterar(fornecedorEsc);
+                                    
+                                    System.out.println("Sucesso ao alterar os dados do Fornecedor!");
+                                    
+                                } catch (Exception e) {
+                                    System.out.println("Erro ao alterar o Fornecedor! " +e.getMessage() + e.getLocalizedMessage());
+                                }
                                 break;
                             case 4: 
                                 break;
