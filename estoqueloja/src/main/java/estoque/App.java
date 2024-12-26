@@ -64,6 +64,8 @@ public class App {
        String opc;
        int opc_rem, id_remocao;
        
+       int tabelaEsc;
+       
        
         menu();
         System.out.println("Deseja escolher qual opcao?");
@@ -355,6 +357,35 @@ public class App {
                        
                     break;
                     
+                case 8:
+                    System.out.println("====================================");
+                    System.out.println("              ALTERAÇÃO             ");
+                    System.out.println("====================================");
+                    System.out.println("Deseja altertar o valor de alguma tabela?");
+                    opc = scan.nextLine().toLowerCase();
+                    
+                    while(opc.equals("sim") || opc.equals("s")){
+                        
+                        System.out.println("Digite o numero da tabela que você deseja alterar!");
+                        tabelas();
+                        tabelaEsc = scan.nextInt();
+                        
+                        switch(tabelaEsc){
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            case 3: 
+                                break;
+                            case 4: 
+                                break;
+                        }
+                        
+                    }
+                    
+                    break;
+                    
+                    
                 case 9:
                     System.out.println("====================================");
                     System.out.println("              LISTAGEM              ");
@@ -367,7 +398,7 @@ public class App {
                         System.out.println("Deseja fazer a listagem de qual tabela?");
                         tabelas();
                         
-                        int tabelaEsc = scan.nextInt();
+                        tabelaEsc = scan.nextInt();
                         switch(tabelaEsc){
                             case 1:
                                 Cidade cidades = new Cidade("cidade");
