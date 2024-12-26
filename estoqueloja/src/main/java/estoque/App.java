@@ -408,7 +408,7 @@ public class App {
                                         estabelecimentoEsc = scan.nextInt();
                                     } catch (Exception e) {
                                         System.out.println("Digite um valor valido!!");
-                                        break;
+                                        break;// parar a execução e perguntar denovo!
                                     }
                                     System.out.println("Informe o novo nome fantasia do Estabelecimento");
                                     nome_fantasia = scan.nextLine();
@@ -441,7 +441,7 @@ public class App {
                                         
                                     } catch (Exception e) {
                                         System.out.println("Digite um valor valido!");
-                                        break;
+                                        break;// parar a execução e perguntar denovo!
                                     }
                                     System.out.println("Informe seu nome: ");
                                     nome = scan.nextLine();
