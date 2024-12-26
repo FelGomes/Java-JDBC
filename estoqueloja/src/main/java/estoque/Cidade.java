@@ -102,7 +102,7 @@ public class Cidade extends Entidade {
     /**
      * Metodo para alterar os dados da tabela cidade 
      */
-    public  void alterar(){
+    public  void alterar(int idSelecionado){
         
         String sql = "UPDATE cidade Set cidade_uf = ?, cidade_nome = ?" + " WHERE id = ?";
         PreparedStatement pstm = null;
@@ -113,7 +113,7 @@ public class Cidade extends Entidade {
             pstm = conexao.prepareStatement(sql);
             pstm.setString(1,this.uf);
             pstm.setString(2, this.nome);
-            //pstm.setInt(3, Cidade.super.getId());
+            pstm.setInt(3, idSelecionado);
             
             pstm.execute();
             

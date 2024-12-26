@@ -48,7 +48,7 @@ public class App {
        Scanner scan = new Scanner(System.in);
        
        
-       String nome, sexo, telefone, cpf;
+       String nome, sexo, telefone, cpf, uf;
        int idade;
        //variaveis para usuarios
        
@@ -64,7 +64,7 @@ public class App {
        String opc;
        int opc_rem, id_remocao;
        
-       int tabelaEsc;
+       int tabelaEsc, cidadeEsc, produtoEsc, fornecedorEsc;
        
        
         menu();
@@ -372,6 +372,31 @@ public class App {
                         
                         switch(tabelaEsc){
                             case 1:
+                                System.out.println("Listagem de cidades!");
+                                Cidade cidades = new Cidade("cidade");
+                                cidades.listar();
+                                try {
+                                    try {
+                                        System.out.println("Digite o numero da cidade que você deseja alterar!");
+                                        cidadeEsc = scan.nextInt();
+                                        
+                                    } catch (Exception e) {
+                                        System.out.println("Digite um numero!!!!");
+                                        break; // parar a execução e perguntar denovo!
+                                    }
+                                    System.out.println("Digite o novo valor de UF:");
+                                    uf = scan.nextLine();
+                                    
+                                    System.out.println("Digite o novo valor de NOME");
+                                    nome = scan.nextLine();
+                                    
+                                    Cidade cid = new Cidade(uf, nome);
+                                    cid.alterar(cidadeEsc);
+                                    System.out.println("Valor alterado com sucesso!");
+                                } catch (Exception e) {
+                                    System.out.println("Erro ao alterar a cidade! " +e.getMessage() + e.getLocalizedMessage());
+                                }
+
                                 break;
                             case 2:
                                 break;
@@ -379,8 +404,15 @@ public class App {
                                 break;
                             case 4: 
                                 break;
+                                
+                                
+                            default:
+                                System.out.println("Valor incorreto!");
+                                break;
                         }
-                        
+                        scan.nextLine();
+                        System.out.println("Deseja alterar outro campo de alguma tabela?");
+                        opc = scan.nextLine().toLowerCase();
                     }
                     
                     break;
