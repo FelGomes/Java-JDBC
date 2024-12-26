@@ -64,7 +64,7 @@ public class App {
        String opc;
        int opc_rem, id_remocao;
        
-       int tabelaEsc, cidadeEsc, produtoEsc, fornecedorEsc, estabelecimentoEsc;
+       int tabelaEsc, cidadeEsc, produtoEsc, fornecedorEsc, estabelecimentoEsc, usuarioEsc;
        
        
         menu();
@@ -490,6 +490,41 @@ public class App {
                                     System.out.println("Produto alterado com sucesso!");
                                 } catch (Exception e) {
                                     System.out.println("Erro ao alterar o Produto! " +e.getMessage() + e.getLocalizedMessage());
+                                }
+                                break;
+                            case 5:
+                                System.out.println("Listagem dos Usuarios para localizar o ID!");
+                                Usuario usuario = new Usuario("usuario");
+                                usuario.listar();
+                                try {
+                                    try {
+                                        System.out.println("Digite o id a ser alterado!");
+                                        usuarioEsc = scan.nextInt();
+                                    } catch (Exception e) {
+                                        System.out.println("Digite um valor valido!");
+                                        break;// parar a execução e perguntar denovo!
+                                    }
+                                    System.out.println("Informe o seu nome: ");
+                                    nome = scan.nextLine();
+                                    System.out.println("Informe seu sexo: ");
+                                    sexo = scan.nextLine();
+                                    System.out.println("Informe seu telefone: ");
+                                    telefone = scan.nextLine();
+                                    System.out.println("Informe seu cpf:");
+                                    cpf = scan.nextLine();
+                                    System.out.println("Informe sua idade:");
+                                    idade = scan.nextInt();
+                                    if (idade <= 0){
+                                        System.out.println("Idade invalida!");
+                                        break;
+                                    }
+                                    Usuario usu = new Usuario(nome, sexo, telefone, cpf, idade);
+                                    usu.alterar(usuarioEsc);
+                                   
+                                    System.out.println("Usuario alterado com sucesso!");
+                                    
+                                } catch (Exception e) {
+                                    System.out.println("Erro ao alterar o usuario! " +e.getMessage() + e.getLocalizedMessage());
                                 }
                                 break;
                                 

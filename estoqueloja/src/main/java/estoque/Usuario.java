@@ -111,9 +111,9 @@ public class Usuario extends Entidade{
      * Metodo para alterar os dados da tabela usuarios - NOME, SEXO, TELEFONE, CPF e IDADE
      */
     
-    public  void alterar(){
+    public  void alterar(int idSelecionado){
         
-        String sql = "UPDATE usuarios Set usuarios_nome = ?, usuarios_sexo = ?, usuarios_telefone = ?, usuarios_cpf = ?, usuarios_idade" + " WHERE usuarios_id = ?";
+        String sql = "UPDATE usuarios Set usuarios_nome = ?, usuarios_sexo = ?, usuarios_telefone = ?, usuarios_cpf = ?, usuarios_idade = ?" + " WHERE usuarios_id = ?";
         PreparedStatement pstm = null;
         
         try {
@@ -125,7 +125,7 @@ public class Usuario extends Entidade{
             pstm.setString(3, Usuario.super.getTelefone());
             pstm.setString(4, this.cpf);
             pstm.setInt(5, this.idade);
-            //pstm.setInt(6, Usuario.super.getId());
+            pstm.setInt(6, idSelecionado);
             
             
             pstm.execute();
