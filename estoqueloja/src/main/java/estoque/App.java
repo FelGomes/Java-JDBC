@@ -64,7 +64,7 @@ public class App {
        String opc;
        int opc_rem, id_remocao;
        
-       int tabelaEsc, cidadeEsc, produtoEsc, fornecedorEsc;
+       int tabelaEsc, cidadeEsc, produtoEsc, fornecedorEsc, estabelecimentoEsc;
        
        
         menu();
@@ -372,7 +372,7 @@ public class App {
                         
                         switch(tabelaEsc){
                             case 1:
-                                System.out.println("Listagem de cidades!");
+                                System.out.println("Listagem de cidades para localizar ID!");
                                 Cidade cidades = new Cidade("cidade");
                                 cidades.listar();
                                 try {
@@ -399,6 +399,35 @@ public class App {
 
                                 break;
                             case 2:
+                                System.out.println("Listagem de estabelecimentos para localizar ID!");
+                                Estabelecimento estabelecimentos = new Estabelecimento("estabelecimento");
+                                estabelecimentos.listar();
+                                try {
+                                    try {
+                                        System.out.println("Digite o ID do estabelecimento que você deseja alterar!");
+                                        estabelecimentoEsc = scan.nextInt();
+                                    } catch (Exception e) {
+                                        System.out.println("Digite um valor valido!!");
+                                        break;
+                                    }
+                                    System.out.println("Informe o novo nome fantasia do Estabelecimento");
+                                    nome_fantasia = scan.nextLine();
+                                    System.out.println("Informe o novo telefone do Estabelecimento");
+                                    telefone = scan.nextLine();
+                                    System.out.println("Informe o novo endereço eletronico do Estabelecimento (email)");
+                                    email =  scan.nextLine();
+                                    System.out.println("Informe o novo CNPJ/CPF do estabelecimento");
+                                    cnpj = scan.nextLine();
+                            
+                                    Estabelecimento estb = new Estabelecimento(nome_fantasia, telefone, email, cnpj);
+                                    estb.alterar(estabelecimentoEsc);
+                                    
+                                    System.out.println("Estabelecimento alterado com sucesso!!");
+                                    
+                                } catch (Exception e) {
+                                    System.out.println("Erro ao alterar o estabelecimento! " +e.getMessage() + e.getLocalizedMessage());
+                                }
+                                
                                 break;
                             case 3: 
                                 break;

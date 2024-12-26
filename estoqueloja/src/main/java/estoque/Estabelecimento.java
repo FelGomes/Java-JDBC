@@ -110,7 +110,7 @@ public class Estabelecimento extends Entidade{
      * Metodo para alterar os dados da tabela estabelecimento, atributos: nome, telefone, email e cnpj
      */
     
-    public  void alterar(){
+    public  void alterar(int idSelecionado){
         
         String sql = "UPDATE estabelecimento Set estabelecimento_nome = ?, estabelecimento_telefone = ?, estabelecimento_email = ?, estabelecimento_cnpj = ?" + " WHERE id = ?";
         PreparedStatement pstm = null;
@@ -123,7 +123,7 @@ public class Estabelecimento extends Entidade{
             pstm.setString(2, Estabelecimento.super.getTelefone());
             pstm.setString(3, this.email);
             pstm.setString(4, this.cnpj);
-            //pstm.setInt(5, Estabelecimento.super.getId());
+            pstm.setInt(5, idSelecionado);
             
             pstm.execute();
             
