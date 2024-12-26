@@ -110,7 +110,7 @@ public class Fornecedores extends Entidade {
      * Metodo para alterar os dados da tabela fornecedores, atributos: nome, telefone, razaoSocial e cnpj
      */
     
-    public  void alterar(){
+    public  void alterar(int idSelecionado){
         
         String sql = "UPDATE fornecedores Set fornecedores_nome = ?, fornecedores_telefone = ?, fornecedores_nomeFantasia = ?, fornecedores_cnpj = ?" + " WHERE id = ?";
         PreparedStatement pstm = null;
@@ -123,7 +123,7 @@ public class Fornecedores extends Entidade {
             pstm.setString(2, Fornecedores.super.getTelefone());
             pstm.setString(3, this.nomeFantasia);
             pstm.setString(4, this.cnpj);
-            //stm.setInt(5, Fornecedores.super.getId());
+            pstm.setInt(5, idSelecionado);
             
             pstm.execute();
             

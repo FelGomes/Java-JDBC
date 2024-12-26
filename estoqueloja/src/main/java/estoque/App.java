@@ -462,6 +462,35 @@ public class App {
                                 }
                                 break;
                             case 4: 
+                                System.out.println("Listagem dos Produtos para localizar o ID!");
+                                Produtos produtos = new Produtos("Produtos");
+                                produtos.listar();
+                                try {
+                                    try {
+                                        System.out.println("Digite o id a ser alterado!");
+                                        produtoEsc = scan.nextInt();
+                                    } catch (Exception e) {
+                                        System.out.println("Digite um valor valido!");
+                                        break;// parar a execução e perguntar denovo!
+                                    }
+                                    System.out.println("Informe o nome do produto");
+                                    nome = scan.nextLine();
+                                    System.out.println("Informe a Marca do produto");
+                                    marca = scan.nextLine();
+                                    System.out.println("Informe a Quantidade desse produto no estoque");
+                                    qtd = scan.nextInt();
+                                    scan.nextLine();
+                                    System.out.println("Informe o preço deste produto");
+                                    preco = scan.nextFloat();
+                            
+                                    Produtos prod = new Produtos(nome, preco, marca, qtd);
+                                    
+                                    prod.alterar(produtoEsc);
+                                    
+                                    System.out.println("Produto alterado com sucesso!");
+                                } catch (Exception e) {
+                                    System.out.println("Erro ao alterar o Produto! " +e.getMessage() + e.getLocalizedMessage());
+                                }
                                 break;
                                 
                                 
@@ -528,12 +557,7 @@ public class App {
                         opc = scan.nextLine().toLowerCase();
                         
                     }
-                    
-                    
-                    
-                    
-                    
-                    
+
                     break;
                     
                 default:
