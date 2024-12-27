@@ -528,9 +528,9 @@ public class App {
                                     System.out.println("Informe o preço deste produto");
                                     preco = scan.nextFloat();
                             
-                                    Produtos prod = new Produtos(nome, preco, marca, qtd);
+                                    Produtos prodt = new Produtos(nome, preco, marca, qtd);
                                     
-                                    prod.alterar(produtoEsc);
+                                    prodt.alterar(produtoEsc);
                                     
                                     System.out.println("Produto alterado com sucesso!");
                                 } catch (Exception e) {
