@@ -126,7 +126,7 @@ public class Produtos extends Entidade {
     
     public  void alterar(int idSelecionado){
         
-        String sql = "UPDATE produtos Set produtos_nome = ?, produtos_preco = ?, produtos_marcas = ?, produtos_qtd = ?" + " WHERE id = ?";
+        String sql = "UPDATE produtos Set produtos_nome = ?, produtos_preco = ?, produtos_marcas = ?, produtos_qtd =  ?" + " WHERE id = ?";
         PreparedStatement pstm = null;
         
         try {
@@ -199,8 +199,104 @@ public class Produtos extends Entidade {
             }
         }
     }
+     
+     public boolean conferir(int id_produtos){
+        
+        String sql = "SELECT * FROM produtos";
+        
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
+        
+        try {
+            Connection conexao = new Conexao().getConexao();
+            
+            pstm = conexao.prepareStatement(sql);
+            
+            rset = pstm.executeQuery();
+            
+            while (rset.next()) {
+                if (rset.getInt("produtos_id") == id_produtos){
+                    System.out.println("Nome " + rset.getString("produtos_nome"));
+                    System.out.println("Quantida " + rset.getString("produtos_qtd"));
+                    return true;
+            }
+
+            }
+        } catch(SQLException e){
+            System.out.println("Esse ID de produto nao existe! " + e.getMessage());
+        } finally {
+            
+            try {
+                if (rset != null){
+                    rset.close();
+                    
+                }
+                if (pstm != null){
+                    pstm.close();
+                }
+            } catch(SQLException e){
+                System.out.println(e.getMessage());
+                return false;
+            }
+        }
+       return true;
+    }
+     
+     //Metodo para fazer a subtração de produtos na hora de vendas
+    /* public void prodtutoExistente(int numero){
+        
+        String sql = "SELECT * FROM produtos";
+        
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
+        
+        try {
+            Connection conexao = new Conexao().getConexao();
+            
+            pstm = conexao.prepareStatement(sql);
+            
+            rset = pstm.executeQuery();
+            
+            while (rset.next()) {
+                if(rset.getInt("produtos_id") == numero){
+                    System.out.println("Quants unidades? !)";
+                    int resposta = scan.nextInt();
+                    diminui(id, quantidade compra, id_usuario)
+                
+                } else {
+                    System.out.println("Informe um ID existente!");
+                }
+            }
+        } catch(SQLException e){
+            System.out.println("Erro ao listar os dados da tabela produtos " + e.getMessage());
+        } finally {
+            
+            try {
+                if (rset != null){
+                    rset.close();
+                    
+                }
+                if (pstm != null){
+                    pstm.close();
+                }
+            } catch(SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }*/
+     
+    public void diminuir(int qtd_compra){
+        if (qtd_compra > this.quantidade){
+             System.out.println("Estoque insuficiente!");
+            
+        } else {
+            this.quantidade -= qtd_compra;
+        }
+        
+    }
+     
     
-}
+} 
     
     
 

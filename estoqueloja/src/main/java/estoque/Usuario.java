@@ -109,6 +109,7 @@ public class Usuario extends Entidade{
     
     /**
      * Metodo para alterar os dados da tabela usuarios - NOME, SEXO, TELEFONE, CPF e IDADE
+     * @param idSelecionado
      */
     
     public  void alterar(int idSelecionado){
@@ -190,4 +191,45 @@ public class Usuario extends Entidade{
         }
     }
     
+     public boolean conferir(int id_usu){
+        
+        String sql = "SELECT * FROM usuarios";
+        
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
+        
+        try {
+            Connection conexao = new Conexao().getConexao();
+            
+            pstm = conexao.prepareStatement(sql);
+            
+            rset = pstm.executeQuery();
+            
+            while (rset.next()) {
+                if(rset.getInt("usuarios_id") == id_usu){
+                    System.out.println("Nome: " + rset.getString("usuario_nome"));
+                    System.out.println("CPF " + rset.getString("usuarios_cpf"));
+            }
+               
+            }
+        } catch(SQLException e){
+            System.out.println("Esse ID nao existe na tabela de usuarios " + e.getMessage());
+            return false;
+        } finally {
+            
+            try {
+                if (rset != null){
+                    rset.close();
+                    
+                }
+                if (pstm != null){
+                    pstm.close();
+                }
+            } catch(SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }
+        return true;
+    }
+
 }

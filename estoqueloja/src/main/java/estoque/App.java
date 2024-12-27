@@ -23,11 +23,11 @@ public class App {
             System.out.println("02) Inserir dados a Fornecedores");
             System.out.println("03) Inserir dados a Produtos");
             System.out.println("04) Inserir dados a Estabelecimento");
-            System.out.println("05) Inserir dados a Endereco");
-            System.out.println("06) Inserir dados a Cidade");
-            System.out.println("07) Deletar valores");
-            System.out.println("08) Alterar valores");
-            System.out.println("09) Listagem");
+            System.out.println("07) Inserir dados a Cidade");
+            System.out.println("06) Vendas ");
+            System.out.println("08) Deletar valores");
+            System.out.println("09) Alterar valores");
+            System.out.println("10) Listagem");
             System.out.println("================================");
                    
         }
@@ -206,6 +206,51 @@ public class App {
                     
                     
                     break;
+                case 6:
+                    Produtos prod = new Produtos("produtos");
+                    Vendas vend = new Vendas("vendas");
+                    System.out.println("========================================");
+                    System.out.println("                 COMPRAS                ");
+                    System.out.println("========================================");
+                    System.out.println("Seja bem vindo as compras!");
+                    System.out.println("Deseja comprar algum produto? ");
+                    String resposta = scan.nextLine().toLowerCase();
+                    while (resposta.equals("sim") || resposta.equals("s")){
+                        System.out.println("Informe seu ID: ");
+                        int id_usu = scan.nextInt();
+                        Usuario usu = new Usuario("usuario");
+                        usu.conferir(id_usu);
+                        if (usu.conferir(id_usu)){
+                            System.out.println("Deseja ver os produtos que tem?");
+                            String quero = scan.nextLine().toLowerCase();
+                            if (quero.equals("sim") || quero.equals("s")){
+                                prod.listar();
+                                
+                            }
+                            System.out.println("Informe o ID do produto que voce deseja escolher: ");
+                            int id_produtos = scan.nextInt();
+                            prod.conferir(id_produtos);
+                            if(prod.conferir(id_produtos)){
+                                System.out.println("Deseja comprar quantas quantidades?");
+                                int quantidade_compras = scan.nextInt();
+                                prod.diminuir(quantidade_compras);
+                                
+                                
+                            } else{
+                                System.out.println("Nao existe produtos com esse ID!");
+                            }
+                        
+                    } else{
+                            System.out.println("Nao existe esse esse ID!");
+                        }
+                    } 
+                    
+                    
+                    
+                    
+                    
+                                      
+                    break;
                     
                 case 7:
                        System.out.println("====================================");
@@ -261,15 +306,15 @@ public class App {
                                    // pedir o id selecionado e colocar ele como parametro no metodo remover() dessa maneira "cidades.remover(idSelecionado)"
                                    break;
                                case 3:
-                                   Produtos prod = new Produtos("produtos");
-                                   prod.listar();
+                                   Produtos pro = new Produtos("produtos");
+                                   pro.listar();
                                    System.out.println("Deseja fazer a remocao de algum campo de produtos? ");
                                    opc = scan.nextLine().toLowerCase();
                                    if (opc.equals("sim") || opc.equals("s")){
                                        try {
                                            System.out.println("Informe o ID que deseja remover: ");
                                            id_remocao = scan.nextInt();
-                                           prod.remover(id_remocao);
+                                           pro.remover(id_remocao);
                                            
                                        } catch(Exception e){
                                            System.out.println("Erro ao remover o ID de produtos " + e.getMessage() + e.getLocalizedMessage());
@@ -338,7 +383,7 @@ public class App {
                                        try {
                                            System.out.println("Qual ID? ");
                                            id_remocao = scan.nextInt();
-                                           vendas.remover();
+                                           vendas.remover(id_remocao);
                                            
                                        } catch (Exception e) {
                                            System.out.println("Erro ao remover ID de vendas! " +e.getMessage() + e.getLocalizedMessage());
@@ -357,7 +402,7 @@ public class App {
                        
                     break;
                     
-                case 8:
+                case 9:
                     System.out.println("====================================");
                     System.out.println("              ALTERAÇÃO             ");
                     System.out.println("====================================");
@@ -541,7 +586,7 @@ public class App {
                     break;
                     
                     
-                case 9:
+                case 10:
                     System.out.println("====================================");
                     System.out.println("              LISTAGEM              ");
                     System.out.println("====================================");

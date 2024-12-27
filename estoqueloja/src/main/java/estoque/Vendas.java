@@ -69,9 +69,10 @@ public class Vendas extends Entidade {
     
     /**
      * Metodo para remover os dados da tabela vendas ao escolher o ID
+     * @param id_selecionado
      */
 
-    public void remover(){
+    public void remover(int id_selecionado){
 
         String sql = "DELETE FROM vendas WHERE id = ?";
         
