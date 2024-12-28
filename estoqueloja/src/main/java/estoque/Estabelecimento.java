@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 /**
  * 
  * @author felipe Ferreira
@@ -18,13 +19,14 @@ public class Estabelecimento extends Entidade{
     private String cnpj;
     
     public Estabelecimento(String nome){
-       super(nome,""); 
+       super(nome,"","",""); 
     }
     
-    public Estabelecimento(String nome, String telefone, String email, String cnpj){
-       super(nome,telefone); 
+    public Estabelecimento(String nome, String telefone, String email, String cnpj, String cidade_nome, String cidade_uf){
+       super(nome,telefone, cidade_nome, cidade_uf); 
        this.cnpj = cnpj;
        this.email = email;
+       
     }
 
     public String getEmail() {
@@ -44,13 +46,13 @@ public class Estabelecimento extends Entidade{
     }
     
     /**
-     * Metodo para inserir valores na tabela estabelecimento, possuindo o atributo: nome, telefone, email e cnpj
+     * Metodo para inserir valores na tabela estabelecimento, possuindo o atributo: nome, telefone, email, cnpj, cidade e uf do estado
      * @throws SQLException 
      */
     
     public void inserir() throws SQLException{
         Connection conexao = new Conexao().getConexao();
-        String sql = "INSERT INTO estabelecimento (estabelecimento_nome, estabelecimento_telefone, estabelecimento_email, estabelecimento_cnpj) Values (?, ?, ?, ?)";
+        String sql = "INSERT INTO estabelecimento (estabelecimento_nome, estabelecimento_telefone, estabelecimento_email, estabelecimento_cnpj, estabelecimento_cidade, estabelecimento_uf) Values (?, ?, ?, ?,?,?)";
         
         try {
             PreparedStatement stmt;
@@ -59,6 +61,8 @@ public class Estabelecimento extends Entidade{
             stmt.setString(2, Estabelecimento.super.getTelefone());
             stmt.setString(3, this.email);
             stmt.setString (4, this.cnpj);
+            stmt.setString(5, Estabelecimento.super.getCidade_nome());
+            stmt.setString(6, Estabelecimento.super.getCidade_uf());
             //stmt.setInt(4, Estabelecimento.super.getId());
             
             stmt.execute();
@@ -108,11 +112,12 @@ public class Estabelecimento extends Entidade{
     
     /**
      * Metodo para alterar os dados da tabela estabelecimento, atributos: nome, telefone, email e cnpj
+     * @param idSelecionado
      */
     
     public  void alterar(int idSelecionado){
         
-        String sql = "UPDATE estabelecimento Set estabelecimento_nome = ?, estabelecimento_telefone = ?, estabelecimento_email = ?, estabelecimento_cnpj = ?" + " WHERE id = ?";
+        String sql = "UPDATE estabelecimento Set estabelecimento_nome = ?, estabelecimento_telefone = ?, estabelecimento_email = ?, estabelecimento_cnpj = ?, estabelecimento_cidade = ?, estabelecimento_uf = ?" + " WHERE id = ?";
         PreparedStatement pstm = null;
         
         try {
@@ -123,6 +128,8 @@ public class Estabelecimento extends Entidade{
             pstm.setString(2, Estabelecimento.super.getTelefone());
             pstm.setString(3, this.email);
             pstm.setString(4, this.cnpj);
+            pstm.setString(5, Estabelecimento.super.getCidade_nome());
+            pstm.setString(6, Estabelecimento.super.getCidade_uf());
             pstm.setInt(5, idSelecionado);
             
             pstm.execute();
@@ -166,6 +173,8 @@ public class Estabelecimento extends Entidade{
                 System.out.println("Telefone: "+ rset.getString("estabelecimento_telefone"));
                 System.out.println("Email: " +rset.getString("estabelecimento_email"));
                 System.out.println("CNPJ: " +rset.getString("estabelecimento_cnpj"));
+                System.out.println("Cidade: "+ rset.getString("estabelecimento_cidade"));
+                System.out.println("UF: " + rset.getString("estabelecimento_uf"));
                 System.out.println("=============================================");
             }
         } catch(SQLException e){

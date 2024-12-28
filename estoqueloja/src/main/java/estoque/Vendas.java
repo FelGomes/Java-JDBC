@@ -16,10 +16,10 @@ public class Vendas extends Entidade {
     private String data;
     private int quantidade;
     public Vendas (String nome){
-        super(nome, "");
+        super(nome, "","","");
     }
     public Vendas (String data, int quantidade){
-        super("","");
+        super("","","","");
         this.data = data;
         this.quantidade = quantidade;
        

@@ -18,11 +18,11 @@ public class Produtos extends Entidade {
     private int quantidade;
     
     public Produtos(String nome){
-        super(nome, "");
+        super(nome, "","","");
     }
 
     public Produtos(String nome, float preco, String marca, int quantidade) {
-        super(nome, "");
+        super(nome, "","","");
         this.preco = preco;
         this.marca = marca;
         this.quantidade = quantidade;
@@ -217,7 +217,7 @@ public class Produtos extends Entidade {
             while (rset.next()) {
                 if (rset.getInt("produtos_id") == id_produtos){
                     System.out.println("Nome " + rset.getString("produtos_nome"));
-                    System.out.println("Quantida " + rset.getString("produtos_qtd"));
+                    System.out.println("Quantidade " + rset.getString("produtos_qtd"));
                     return true;
             }
 

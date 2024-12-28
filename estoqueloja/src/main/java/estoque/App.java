@@ -23,23 +23,21 @@ public class App {
             System.out.println("02) Inserir dados a Fornecedores");
             System.out.println("03) Inserir dados a Produtos");
             System.out.println("04) Inserir dados a Estabelecimento");
-            System.out.println("07) Inserir dados a Cidade");
-            System.out.println("06) Vendas ");
-            System.out.println("08) Deletar valores");
-            System.out.println("09) Alterar valores");
-            System.out.println("10) Listagem");
+            System.out.println("05) Vendas ");
+            System.out.println("06) Deletar valores");
+            System.out.println("07) Alterar valores");
+            System.out.println("08) Listagem");
             System.out.println("================================");
                    
         }
         
         public static void tabelas(){
             System.out.println("-------------------");
-            System.out.println("1 - Cidades");
-            System.out.println("2 - Estabelecimentos");
-            System.out.println("3 - Fornecedores");
-            System.out.println("4 - Produtos");
-            System.out.println("5 - Usuarios");
-            System.out.println("6 - Vendas");
+            System.out.println("1 - Estabelecimentos");
+            System.out.println("2 - Fornecedores");
+            System.out.println("3 - Produtos");
+            System.out.println("4 - Usuarios");
+            System.out.println("5 - Vendas");
             System.out.println("-------------------");
         }
         
@@ -48,7 +46,7 @@ public class App {
        Scanner scan = new Scanner(System.in);
        
        
-       String nome, sexo, telefone, cpf, uf;
+       String nome, sexo, telefone, cpf,cidade, uf;
        int idade;
        //variaveis para usuarios
        
@@ -97,7 +95,12 @@ public class App {
                                 System.out.println("Idade invalida!");
                                 break;
                             }
-                            Usuario usu = new Usuario(nome, sexo, telefone, cpf, idade);
+                            System.out.println("Informe o nome da sua ciade: ");
+                            cidade = scan.nextLine();
+                            System.out.println("Informe o UF do seu estado");
+                            uf = scan.nextLine();
+                            
+                            Usuario usu = new Usuario(nome, sexo, telefone, cpf, idade, cidade, uf);
                             usu.inserir();
                             
                             System.out.println("Deseja fazer outro cadastro? ");
@@ -125,7 +128,11 @@ public class App {
                             nome_fantasia = scan.nextLine();
                             System.out.println("Informe o CNPJ: ");
                             cnpj_forn = scan.nextLine();
-                            Fornecedores fornecedores = new Fornecedores(nome,telefone,nome_fantasia,cnpj_forn);
+                            System.out.println("Informe o nome da cidade: ");
+                            cidade = scan.nextLine();
+                            System.out.println("Informe o UF do estado");
+                            uf = scan.nextLine();
+                            Fornecedores fornecedores = new Fornecedores(nome,telefone,nome_fantasia,cnpj_forn, cidade, uf);
                             fornecedores.inserir();
                             
                         } catch(Exception e){
@@ -189,8 +196,12 @@ public class App {
                             email =  scan.nextLine();
                             System.out.println("Informe o CNPJ/CPF do estabelecimento");
                             cnpj = scan.nextLine();
+                            System.out.println("Informe o nome da cidade: ");
+                            cidade = scan.nextLine();
+                            System.out.println("Informe o UF do estado: ");
+                            uf = scan.nextLine();
                             
-                            Estabelecimento estabelecimento = new Estabelecimento(nome_fantasia, telefone, email, cnpj);
+                            Estabelecimento estabelecimento = new Estabelecimento(nome_fantasia, telefone, email, cnpj, cidade, uf);
                             
                             estabelecimento.inserir();
                             
@@ -206,7 +217,7 @@ public class App {
                     
                     
                     break;
-                case 6:
+                case 5:
                     Produtos prod = new Produtos("produtos");
                     Vendas vend = new Vendas("vendas");
                     System.out.println("========================================");
@@ -252,7 +263,7 @@ public class App {
                                       
                     break;
                     
-                case 7:
+                case 6:
                        System.out.println("====================================");
                        System.out.println("              REMOCAO               ");
                        System.out.println("====================================");
@@ -262,10 +273,9 @@ public class App {
                        while(opc.equals("sim")|| opc.equals("s")){
                            System.out.println("========================");
                            System.out.println("1 - Usuario");
-                           System.out.println("2 - Cidade");
-                           System.out.println("3 - Produtos");
-                           System.out.println("4 - Estabelecimento");
-                           System.out.println("5 - Fornecedores");
+                           System.out.println("2 - Produtos");
+                           System.out.println("3 - Estabelecimento");
+                           System.out.println("4 - Fornecedores");
                            System.out.println("========================");
                            System.out.println("Deseja fazer remoção de qual tabela");
                            opc_rem = scan.nextInt();
@@ -289,23 +299,6 @@ public class App {
                                    // pedir o id selecionado e colocar ele como parametro no metodo remover() dessa maneira "usu.remover(idSelecionado)"
                                    break;
                                case 2:
-                                   Cidade cid = new Cidade("cidade");
-                                   cid.listar();
-                                   System.out.println("Deseja fazer a remocao de algum campo de ciade?");
-                                   opc = scan.nextLine().toLowerCase();
-                                   if (opc.equals("sim")|| opc.equals("s")){
-                                       try{
-                                           System.out.println("Informe o ID que deseja remover: ");
-                                           id_remocao = scan.nextInt();
-                                           cid.remover(id_remocao);
-                                        }  catch (Exception e){
-                                            System.out.println("Erro ao remover o id de cidade " + e.getMessage() + e.getLocalizedMessage());
-                                        } 
-                                   }
-                                   // fazer listagem de todos as cidades para encontrar o id desejado a excluir
-                                   // pedir o id selecionado e colocar ele como parametro no metodo remover() dessa maneira "cidades.remover(idSelecionado)"
-                                   break;
-                               case 3:
                                    Produtos pro = new Produtos("produtos");
                                    pro.listar();
                                    System.out.println("Deseja fazer a remocao de algum campo de produtos? ");
@@ -323,7 +316,7 @@ public class App {
                                    // fazer listagem de todos os produtos para encontrar o id desejado a excluir
                                    // pedir o id selecionado e colocar ele como parametro no metodo remover() dessa maneira "produtos.remover(idSelecionado)"
                                    break;
-                               case 4:
+                               case 3:
                                    Estabelecimento esta = new Estabelecimento("estabelecimento");
                                    esta.listar();
                                    System.out.println("Deseja fazer a remocao de algum ID?");
@@ -341,7 +334,7 @@ public class App {
                                    // fazer listagem de todos os estabelecimentos para encontrar o id desejado a excluir
                                    // pedir o id selecionado e colocar ele como parametro no metodo remover() dessa maneira "estabelecimentos.remover(idSelecionado)"
                                    break;
-                               case 5:
+                               case 4:
                                    Fornecedores forn = new Fornecedores("fornecedores");
                                    forn.listar();
                                    System.out.println("Deseja fazer a remocao de algum ID?");
@@ -358,22 +351,6 @@ public class App {
                                    // fazer listagem de todos os fornecedores para encontrar o id desejado a excluir
                                    // pedir o id selecionado e colocar ele como parametro no metodo remover() dessa maneira "fornecedores.remover(idSelecionado)"
                                    break;
-                               case 6:
-                                   Endereco end = new Endereco("endereco");
-                                   end.listar();
-                                   System.out.println("Deseja fazer remocao de algum ID? ");
-                                   opc = scan.nextLine().toLowerCase();
-                                   if(opc.equals("sim") || opc.equals("s")){
-                                       try{
-                                           System.out.println("Deseja fazer remocao de qual ID? ");
-                                           id_remocao = scan.nextInt();
-                                           end.remover(id_remocao);
-                                       }catch(Exception e) {
-                                           System.out.println("Erro oa fazer a remocao da tabela endereco! " + e.getMessage() + e.getLocalizedMessage());
-                                       }
-
-                                       
-                                   }
                                case 7:
                                    Vendas vendas = new Vendas("vendas");
                                    vendas.listar();
@@ -402,7 +379,7 @@ public class App {
                        
                     break;
                     
-                case 9:
+                case 7:
                     System.out.println("====================================");
                     System.out.println("              ALTERAÇÃO             ");
                     System.out.println("====================================");
@@ -417,33 +394,6 @@ public class App {
                         
                         switch(tabelaEsc){
                             case 1:
-                                System.out.println("Listagem de cidades para localizar ID!");
-                                Cidade cidades = new Cidade("cidade");
-                                cidades.listar();
-                                try {
-                                    try {
-                                        System.out.println("Digite o numero da cidade que você deseja alterar!");
-                                        cidadeEsc = scan.nextInt();
-                                        
-                                    } catch (Exception e) {
-                                        System.out.println("Digite um numero!!!!");
-                                        break; // parar a execução e perguntar denovo!
-                                    }
-                                    System.out.println("Digite o novo valor de UF:");
-                                    uf = scan.nextLine();
-                                    
-                                    System.out.println("Digite o novo valor de NOME");
-                                    nome = scan.nextLine();
-                                    
-                                    Cidade cid = new Cidade(uf, nome);
-                                    cid.alterar(cidadeEsc);
-                                    System.out.println("Valor alterado com sucesso!");
-                                } catch (Exception e) {
-                                    System.out.println("Erro ao alterar a cidade! " +e.getMessage() + e.getLocalizedMessage());
-                                }
-
-                                break;
-                            case 2:
                                 System.out.println("Listagem de estabelecimentos para localizar ID!");
                                 Estabelecimento estabelecimentos = new Estabelecimento("estabelecimento");
                                 estabelecimentos.listar();
@@ -463,8 +413,12 @@ public class App {
                                     email =  scan.nextLine();
                                     System.out.println("Informe o novo CNPJ/CPF do estabelecimento");
                                     cnpj = scan.nextLine();
+                                    System.out.println("Informe o novo nome da cidade do estabelecimento: ");
+                                    cidade = scan.nextLine();
+                                    System.out.println("Informe o UF dessa cidade: ");
+                                    uf = scan.nextLine();
                             
-                                    Estabelecimento estb = new Estabelecimento(nome_fantasia, telefone, email, cnpj);
+                                    Estabelecimento estb = new Estabelecimento(nome_fantasia, telefone, email, cnpj, cidade, uf);
                                     estb.alterar(estabelecimentoEsc);
                                     
                                     System.out.println("Estabelecimento alterado com sucesso!!");
@@ -474,7 +428,7 @@ public class App {
                                 }
                                 
                                 break;
-                            case 3: 
+                            case 2: 
                                 System.out.println("Listagem dos Fornecedores para localizar o ID!");
                                 Fornecedores fornecedor = new Fornecedores("fornecedor");
                                 fornecedor.listar();
@@ -496,7 +450,11 @@ public class App {
                                     nome_fantasia = scan.nextLine();
                                     System.out.println("Informe o CNPJ: ");
                                     cnpj_forn = scan.nextLine();
-                                    Fornecedores forn = new Fornecedores(nome,telefone,nome_fantasia,cnpj_forn);
+                                    System.out.println("Informe o novo nome da cidade do Fornecedor: ");
+                                    cidade = scan.nextLine();
+                                    System.out.println("Informe o UF do estado dessa cidade: ");
+                                    uf = scan.nextLine();
+                                    Fornecedores forn = new Fornecedores(nome,telefone,nome_fantasia,cnpj_forn,cidade, uf);
                                     
                                     forn.alterar(fornecedorEsc);
                                     
@@ -506,7 +464,7 @@ public class App {
                                     System.out.println("Erro ao alterar o Fornecedor! " +e.getMessage() + e.getLocalizedMessage());
                                 }
                                 break;
-                            case 4: 
+                            case 3: 
                                 System.out.println("Listagem dos Produtos para localizar o ID!");
                                 Produtos produtos = new Produtos("Produtos");
                                 produtos.listar();
@@ -537,7 +495,7 @@ public class App {
                                     System.out.println("Erro ao alterar o Produto! " +e.getMessage() + e.getLocalizedMessage());
                                 }
                                 break;
-                            case 5:
+                            case 4:
                                 System.out.println("Listagem dos Usuarios para localizar o ID!");
                                 Usuario usuario = new Usuario("usuario");
                                 usuario.listar();
@@ -563,7 +521,11 @@ public class App {
                                         System.out.println("Idade invalida!");
                                         break;
                                     }
-                                    Usuario usu = new Usuario(nome, sexo, telefone, cpf, idade);
+                                    System.out.println("Informe a nova cidade do usuario: ");
+                                    cidade = scan.nextLine();
+                                    System.out.println("Informe o UF do estado: ");
+                                    uf = scan.nextLine();
+                                    Usuario usu = new Usuario(nome, sexo, telefone, cpf, idade, cidade, uf);
                                     usu.alterar(usuarioEsc);
                                    
                                     System.out.println("Usuario alterado com sucesso!");
@@ -586,7 +548,7 @@ public class App {
                     break;
                     
                     
-                case 10:
+                case 8:
                     System.out.println("====================================");
                     System.out.println("              LISTAGEM              ");
                     System.out.println("====================================");
@@ -601,32 +563,24 @@ public class App {
                         tabelaEsc = scan.nextInt();
                         switch(tabelaEsc){
                             case 1:
-                                Cidade cidades = new Cidade("cidade");
-                                cidades.listar();
-                                break;
-                            case 2:
                                 Estabelecimento estabelecimentos = new Estabelecimento("estabelecimento");
                                 estabelecimentos.listar();
                                 break;
-                            case 3:
+                            case 2:
                                 Fornecedores fornecedor = new Fornecedores("fornecedor");
                                 fornecedor.listar();
                                 break;
-                            case 4:
+                            case 3:
                                 Produtos produtos = new Produtos("Produtos");
                                 produtos.listar();
                                 break;
-                            case 5:
+                            case 4:
                                 Usuario usu = new Usuario("usuario");
                                 usu.listar();
                                 break;
-                            case 6:
+                            case 5:
                                 Vendas vendas = new Vendas("vendas");
                                 vendas.listar();
-                            case 7:
-                                Endereco endereco = new Endereco("endereco");
-                                endereco.listar();
-                                break;
                             default:
                                 System.out.println("Numero de tabela errado");
                                 break;

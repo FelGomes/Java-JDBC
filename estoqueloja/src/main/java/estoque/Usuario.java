@@ -17,11 +17,11 @@ public class Usuario extends Entidade{
     private int idade;
     
     public Usuario(String nome){
-        super(nome,"");
+        super(nome,"","","");
     }
     
-    public Usuario(String nome, String sexo, String telefone, String cpf, int idade){
-        super(nome, telefone);
+    public Usuario(String nome, String sexo, String telefone, String cpf, int idade, String cidade_nome, String cidade_uf){
+        super(nome, telefone, cidade_nome, cidade_uf);
         this.sexo = sexo;
         this.cpf = cpf;
         this.idade = idade;
@@ -50,7 +50,7 @@ public class Usuario extends Entidade{
     
      public void inserir() throws SQLException{
         Connection conexao = new Conexao().getConexao();
-        String sql = "INSERT INTO usuarios (usuarios_nome, usuarios_sexo, usuarios_telefone, usuarios_cpf, usuarios_idade) Values (?, ?, ?, ?,?)";
+        String sql = "INSERT INTO usuarios (usuarios_nome, usuarios_sexo, usuarios_telefone, usuarios_cpf, usuarios_idade, usuarios_cidade, usuarios_uf) Values (?, ?, ?, ?,?, ?, ?)";
         
         try {
             PreparedStatement stmt;
@@ -60,6 +60,8 @@ public class Usuario extends Entidade{
             stmt.setString(3, Usuario.super.getTelefone());
             stmt.setString(4, this.cpf);
             stmt.setInt(5, this.idade);
+            stmt.setString(6, Usuario.super.getCidade_nome());
+            stmt.setString(7, Usuario.super.getCidade_uf());
             //stmt.setInt(6, Usuario.super.getId());
           
             stmt.execute();
@@ -114,7 +116,7 @@ public class Usuario extends Entidade{
     
     public  void alterar(int idSelecionado){
         
-        String sql = "UPDATE usuarios Set usuarios_nome = ?, usuarios_sexo = ?, usuarios_telefone = ?, usuarios_cpf = ?, usuarios_idade = ?" + " WHERE usuarios_id = ?";
+        String sql = "UPDATE usuarios Set usuarios_nome = ?, usuarios_sexo = ?, usuarios_telefone = ?, usuarios_cpf = ?, usuarios_idade = ?, usuario_cidade = ?, usuario_uf = ?" + " WHERE usuarios_id = ?";
         PreparedStatement pstm = null;
         
         try {
@@ -126,7 +128,9 @@ public class Usuario extends Entidade{
             pstm.setString(3, Usuario.super.getTelefone());
             pstm.setString(4, this.cpf);
             pstm.setInt(5, this.idade);
-            pstm.setInt(6, idSelecionado);
+            pstm.setString(6, Usuario.super.getCidade_nome());
+            pstm.setString(7, Usuario.super.getCidade_uf());
+            pstm.setInt(8, idSelecionado);
             
             
             pstm.execute();
@@ -171,6 +175,8 @@ public class Usuario extends Entidade{
                 System.out.println("Telefone: " +rset.getString("usuarios_telefone"));
                 System.out.println("Cpf: " +rset.getString("usuarios_cpf"));
                 System.out.println("Idade: " +rset.getInt("usuarios_idade"));
+                System.out.println("Cidade: " + rset.getString("usuario_cidade"));
+                System.out.println("Uf: " + rset.getString("usuario_uf"));
                 System.out.println("=============================================");
             }
         } catch(SQLException e){
