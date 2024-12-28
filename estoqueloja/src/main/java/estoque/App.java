@@ -245,6 +245,11 @@ public class App {
                                 System.out.println("Deseja comprar quantas quantidades?");
                                 int quantidade_compras = scan.nextInt();
                                 prod.diminuir(quantidade_compras);
+                                System.out.println("Informe o horario da venda de agora:");
+                                String horario = scan.nextLine();
+                                Usuario user = new Usuario("usuario");
+                                Vendas vend = new Vendas(quantidade_compras, horario,user, prod);
+                                vend.inserir();
                                 
                                 
                             } else{
@@ -255,11 +260,7 @@ public class App {
                             System.out.println("Nao existe esse esse ID!");
                         }
                     } 
-                    
-                    
-                    
-                    
-                    
+                                       
                                       
                     break;
                     

@@ -43,6 +43,10 @@ public class Usuario extends Entidade{
         this.cpf = cpf;
     }
     
+    public void getId(int ID){
+        Usuario.super.getId();
+    }
+    
     /**
      * Metodo para inserir dados para Usuario - NOME, SEXO, TELEFONE, CPF e IDADE
      * @throws SQLException 
@@ -199,7 +203,7 @@ public class Usuario extends Entidade{
     
      public boolean conferir(int id_usu){
         
-        String sql = "SELECT * FROM usuarios";
+        String sql = "SELECT * FROM usuarios WHERE usuarios_id = ?";
         
         PreparedStatement pstm = null;
         ResultSet rset = null;
@@ -210,14 +214,9 @@ public class Usuario extends Entidade{
             pstm = conexao.prepareStatement(sql);
             
             rset = pstm.executeQuery();
+            PreparedStatement stmt = null;
+            stmt.setInt(1, Usuario.super.getId());
             
-            while (rset.next()) {
-                if(rset.getInt("usuarios_id") == id_usu){
-                    System.out.println("Nome: " + rset.getString("usuario_nome"));
-                    System.out.println("CPF " + rset.getString("usuarios_cpf"));
-            }
-               
-            }
         } catch(SQLException e){
             System.out.println("Esse ID nao existe na tabela de usuarios " + e.getMessage());
             return false;

@@ -11,18 +11,21 @@ import java.sql.SQLException;
  * @since 15/12/2024 at 15:54
  */
 
-public class Vendas extends Entidade {
+public class Vendas  {
     
     private String data;
     private int quantidade;
-    public Vendas (String nome){
-        super(nome, "","","");
+    private int id_vendas;
+    Produtos prod = new Produtos("produtos");
+    Usuario usu;
+    
+    public Vendas (){
     }
-    public Vendas (String data, int quantidade){
-        super("","","","");
+    public Vendas (String data, int quantidade, Usuario user, Produtos prod){
         this.data = data;
-        this.quantidade = quantidade;
-       
+        this.quantidade = quantidade; 
+        this.usu = user;
+        this.prod = prod;
     }
 
     public String getData() {
@@ -46,13 +49,15 @@ public class Vendas extends Entidade {
      */
      public void inserir() throws SQLException{
         Connection conexao = new Conexao().getConexao();
-        String sql = "INSERT INTO vendas (vendas_quantidade, data_venda) VALUES (?,?)";
+        String sql = "INSERT INTO vendas (vendas_quantidade, data_venda, usuarios_id, produtos_id) VALUES (?,?,?,?)";
         
         try {
             PreparedStatement stmt;
             stmt = conexao.prepareStatement(sql);
             stmt.setInt(1, this.quantidade);
             stmt.setString(2, this.data);
+            stmt.setInt(3, usu.getId());
+            stmt.setInt(4, prod.getId());
             //stmt.setInt(3, Vendas.super.getId());
             
             stmt.execute();
@@ -82,7 +87,7 @@ public class Vendas extends Entidade {
              Connection conexao = new Conexao().getConexao();
              
              pstm = conexao.prepareStatement(sql);
-             pstm.setInt(1, Vendas.super.getId());
+             pstm.setInt(1, this.id_vendas);
              
              pstm.execute();
             
@@ -152,9 +157,11 @@ public class Vendas extends Entidade {
             rset = pstm.executeQuery();
             
             while (rset.next()) {
-                System.out.println(rset.getInt("vendas_id"));
-                System.out.println(rset.getInt("vendas_quantidade"));
-                System.out.println(rset.getString("data_venda"));
+                System.out.println("ID: "+rset.getInt("vendas_id"));
+                System.out.println("Quantidade vendida: "+ rset.getInt("vendas_quantidade"));
+                System.out.println("Horario de venda: " +rset.getString("data_venda"));
+                System.out.println("ID do usuario: " + rset.getString("usuarios_id"));
+                System.out.println("ID do produto: "+rset.getString("produtos_id"));
                 System.out.println("=============================================");
             }
         } catch(SQLException e){
