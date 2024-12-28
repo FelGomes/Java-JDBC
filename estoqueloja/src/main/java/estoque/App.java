@@ -108,7 +108,7 @@ public class App {
                         }
 
                     } catch (Exception e){
-                        System.out.println("Erro na inserção de dados!");
+                        System.out.println("Erro na inserção de dados!" + e.getMessage());
                     }
                     break;
                 case 2:
