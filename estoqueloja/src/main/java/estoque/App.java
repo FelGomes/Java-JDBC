@@ -41,7 +41,7 @@ public class App {
             System.out.println("-------------------");
         }
         
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         
        Scanner scan = new Scanner(System.in);
        
@@ -95,10 +95,11 @@ public class App {
                                 System.out.println("Idade invalida!");
                                 break;
                             }
+                            scan.nextLine();
                             System.out.println("Informe o nome da sua ciade: ");
                             cidade = scan.nextLine();
                             System.out.println("Informe o UF do seu estado");
-                            uf = scan.nextLine();
+                            uf = scan.nextLine().toUpperCase();;
                             
                             Usuario usu = new Usuario(nome, sexo, telefone, cpf, idade, cidade, uf);
                             usu.inserir();
@@ -131,7 +132,7 @@ public class App {
                             System.out.println("Informe o nome da cidade: ");
                             cidade = scan.nextLine();
                             System.out.println("Informe o UF do estado");
-                            uf = scan.nextLine();
+                            uf = scan.nextLine().toUpperCase();;
                             Fornecedores fornecedores = new Fornecedores(nome,telefone,nome_fantasia,cnpj_forn, cidade, uf);
                             fornecedores.inserir();
                             
@@ -199,7 +200,7 @@ public class App {
                             System.out.println("Informe o nome da cidade: ");
                             cidade = scan.nextLine();
                             System.out.println("Informe o UF do estado: ");
-                            uf = scan.nextLine();
+                            uf = scan.nextLine().toUpperCase();
                             
                             Estabelecimento estabelecimento = new Estabelecimento(nome_fantasia, telefone, email, cnpj, cidade, uf);
                             
@@ -219,13 +220,13 @@ public class App {
                     break;
                 case 5:
                     Produtos prod = new Produtos("produtos");
-                    Vendas vend = new Vendas("vendas");
                     System.out.println("========================================");
                     System.out.println("                 COMPRAS                ");
                     System.out.println("========================================");
                     System.out.println("Seja bem vindo as compras!");
                     System.out.println("Deseja comprar algum produto? ");
                     String resposta = scan.nextLine().toLowerCase();
+                    
                     while (resposta.equals("sim") || resposta.equals("s")){
                         System.out.println("Informe seu ID: ");
                         int id_usu = scan.nextInt();
@@ -247,8 +248,7 @@ public class App {
                                 prod.diminuir(quantidade_compras);
                                 System.out.println("Informe o horario da venda de agora:");
                                 String horario = scan.nextLine();
-                                Usuario user = new Usuario("usuario");
-                                Vendas vend = new Vendas(quantidade_compras, horario,user, prod);
+                                Vendas vend = new Vendas(quantidade_compras, horario, id_usu, id_produtos);
                                 vend.inserir();
                                 
                                 
@@ -353,7 +353,7 @@ public class App {
                                    // pedir o id selecionado e colocar ele como parametro no metodo remover() dessa maneira "fornecedores.remover(idSelecionado)"
                                    break;
                                case 7:
-                                   Vendas vendas = new Vendas("vendas");
+                                   Vendas vendas = new Vendas();
                                    vendas.listar();
                                    System.out.println("Deseja fazer a remocao de algum ID?");
                                    opc = scan.nextLine().toLowerCase();
@@ -580,7 +580,7 @@ public class App {
                                 usu.listar();
                                 break;
                             case 5:
-                                Vendas vendas = new Vendas("vendas");
+                                Vendas vendas = new Vendas();
                                 vendas.listar();
                             default:
                                 System.out.println("Numero de tabela errado");

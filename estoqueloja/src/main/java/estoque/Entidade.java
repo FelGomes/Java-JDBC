@@ -17,7 +17,7 @@ public class Entidade {
         this.nome = nome;
         this.telefone = telefone;
         this.cidade_nome = cidade_nome;
-        this.cidade_uf = cidade_nome;
+        this.cidade_uf = cidade_uf;
     }
 
     public int getId() {

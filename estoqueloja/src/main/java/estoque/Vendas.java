@@ -16,16 +16,15 @@ public class Vendas  {
     private String data;
     private int quantidade;
     private int id_vendas;
-    Produtos prod = new Produtos("produtos");
-    Usuario usu;
-    
+    private int id_usuario;
+    private int id_produtos;
     public Vendas (){
     }
-    public Vendas (String data, int quantidade, Usuario user, Produtos prod){
+    public Vendas (int quantidade, String data, int id_usuario, int id_produtos){
         this.data = data;
         this.quantidade = quantidade; 
-        this.usu = user;
-        this.prod = prod;
+        this.id_produtos = id_produtos;
+        this.id_usuario = id_usuario;
     }
 
     public String getData() {
@@ -56,8 +55,8 @@ public class Vendas  {
             stmt = conexao.prepareStatement(sql);
             stmt.setInt(1, this.quantidade);
             stmt.setString(2, this.data);
-            stmt.setInt(3, usu.getId());
-            stmt.setInt(4, prod.getId());
+            stmt.setInt(3, this.id_usuario);
+            stmt.setInt(4, this.id_produtos);
             //stmt.setInt(3, Vendas.super.getId());
             
             stmt.execute();

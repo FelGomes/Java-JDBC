@@ -179,8 +179,8 @@ public class Usuario extends Entidade{
                 System.out.println("Telefone: " +rset.getString("usuarios_telefone"));
                 System.out.println("Cpf: " +rset.getString("usuarios_cpf"));
                 System.out.println("Idade: " +rset.getInt("usuarios_idade"));
-                System.out.println("Cidade: " + rset.getString("usuario_cidade"));
-                System.out.println("Uf: " + rset.getString("usuario_uf"));
+                System.out.println("Cidade: " + rset.getString("usuarios_cidade"));
+                System.out.println("Uf: " + rset.getString("usuarios_uf"));
                 System.out.println("=============================================");
             }
         } catch(SQLException e){

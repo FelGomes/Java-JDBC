@@ -223,14 +223,15 @@ public class Produtos extends Entidade {
                 if (rset.getInt("produtos_id") == id_produtos){
                     System.out.println("Nome " + rset.getString("produtos_nome"));
                     System.out.println("Preco: " + rset.getString("produtos_preco"));
-                    
+                    return true;
                 } else {
-                    System.out.println("Nao existe ");
+                    System.out.println("Nao existe esse produto");
+                    return false;
                 }
 
             }
         } catch(SQLException e){
-            System.out.println("Erro ao fazer a venda " + e.getMessage());
+            System.out.println("Erro ao conferir o produto especificado" + e.getMessage());
         } finally {
             
             try {
