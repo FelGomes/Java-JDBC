@@ -285,6 +285,7 @@ public class App {
                                         System.out.println("Informe o ID que voce deseja remover: ");
                                         id_remocao = scan.nextInt();
                                         usu.remover(id_remocao);
+                                        scan.nextLine();
                                     } catch (Exception e) {
                                         System.out.println("Erro ao remover o id de usuario" + e.getMessage() + e.getLocalizedMessage());
                                     }
@@ -303,7 +304,7 @@ public class App {
                                         System.out.println("Informe o ID que deseja remover: ");
                                         id_remocao = scan.nextInt();
                                         pro.remover(id_remocao);
-
+                                        scan.nextLine();
                                     } catch (Exception e) {
                                         System.out.println("Erro ao remover o ID de produtos " + e.getMessage() + e.getLocalizedMessage());
                                     }
@@ -321,6 +322,7 @@ public class App {
                                         System.out.println("Informe o ID que voce deseja remover: ");
                                         id_remocao = scan.nextInt();
                                         esta.remover(id_remocao);
+                                        scan.nextLine();
                                     } catch (Exception e) {
                                         System.out.println("Erro ao remover Id de estabelecimento! " + e.getMessage() + e.getLocalizedMessage());
                                     }
@@ -339,6 +341,7 @@ public class App {
                                         System.out.println("Informe o ID que voce deseja remover: ");
                                         id_remocao = scan.nextInt();
                                         forn.remover(id_remocao);
+                                        scan.nextLine();
                                     } catch (Exception e) {
                                         System.out.println("Erro ao remover o ID de fornecedores! " + e.getMessage() + e.getLocalizedMessage());
                                     }
@@ -356,6 +359,7 @@ public class App {
                                         System.out.println("Qual ID? ");
                                         id_remocao = scan.nextInt();
                                         vendas.remover(id_remocao);
+                                        scan.nextLine();
 
                                     } catch (Exception e) {
                                         System.out.println("Erro ao remover ID de vendas! " + e.getMessage() + e.getLocalizedMessage());
