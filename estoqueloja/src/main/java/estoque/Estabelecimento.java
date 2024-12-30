@@ -115,7 +115,7 @@ public class Estabelecimento extends Entidade{
      * @param idSelecionado
      */
     
-    public  void alterar(int idSelecionado){
+    public  void alterar(int idSelecionado, String nome, String telefone, String email, String cnpj, String cidade_nome, String uf){
         
         String sql = "UPDATE estabelecimento Set estabelecimento_nome = ?, estabelecimento_telefone = ?, estabelecimento_email = ?, estabelecimento_cnpj = ?, estabelecimento_cidade = ?, estabelecimento_uf = ?" + " WHERE id = ?";
         PreparedStatement pstm = null;
@@ -130,7 +130,7 @@ public class Estabelecimento extends Entidade{
             pstm.setString(4, this.cnpj);
             pstm.setString(5, Estabelecimento.super.getCidade_nome());
             pstm.setString(6, Estabelecimento.super.getCidade_uf());
-            pstm.setInt(5, idSelecionado);
+            pstm.setInt(7, idSelecionado);
             
             pstm.execute();
             
