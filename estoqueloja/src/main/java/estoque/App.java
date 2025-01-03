@@ -214,7 +214,6 @@ public class App {
 
                     break;
                 case 5:
-                    Produtos prod = new Produtos("produtos");
                     System.out.println("========================================");
                     System.out.println("                 COMPRAS                ");
                     System.out.println("========================================");
@@ -225,34 +224,28 @@ public class App {
                     while (resposta.equals("sim") || resposta.equals("s")) {
                         System.out.println("Informe seu ID: ");
                         int id_usu = scan.nextInt();
-                        Usuario usu = new Usuario("usuario");
-                       // usu.conferir(id_usu);
-                        //if (usu.conferir(id_usu)) {
-                            System.out.println("Deseja ver os produtos que tem?");
-                            String quero = scan.nextLine().toLowerCase();
-                            if (quero.equals("sim") || quero.equals("s")) {
-                                prod.listar();
-
-                           // }
-                            System.out.println("Informe o ID do produto que voce deseja escolher: ");
-                            int id_produtos = scan.nextInt();
-                            //prod.conferir(id_produtos);
-                           // if (prod.conferir(id_produtos)) {
-                                System.out.println("Deseja comprar quantas quantidades?");
-                                int quantidade_compras = scan.nextInt();
-                                prod.diminuir(quantidade_compras);
-                                System.out.println("Informe o horario da venda de agora:");
-                                String horario = scan.nextLine();
-                                Vendas vend = new Vendas(quantidade_compras, horario, id_usu, id_produtos);
-                                vend.inserir();
-
-                            //} else {
-                            //    System.out.println("Nao existe produtos com esse ID!");
-                            }
-
-                       // } else {
-                          //  System.out.println("Nao existe esse esse ID!");
-                       // }
+                        
+                        System.out.println("Qual o id do Produto?");
+                        int id_prodt = scan.nextInt();
+                        
+                        Usuario usuv = new Usuario("vendas");
+                        Produtos prodtv =  new Produtos("vendas");
+                        
+                        System.out.println("Deseja fazer a compra de quantos items?");
+                        int qtdProd = scan.nextInt(); 
+                        
+                        System.out.println("Qual o dia que a venda foi realizada? EX (25/12/2020");
+                        String dataVnd = scan.nextLine();
+                        
+                        Vendas venda = new Vendas(qtdProd,dataVnd, id_usu, id_prodt); 
+                        
+                        prodtv.alterarQtd(id_prodt, qtdProd); // alterando valor de quantidade do produto da tabela produtos
+                        
+                        venda.inserir(); // adiciona uma nova linha com essas informações
+                        
+                        
+                        
+                       
                     }
 
                     break;
