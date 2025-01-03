@@ -251,14 +251,36 @@ public class Produtos extends Entidade {
        return true;
     }
     
-      public void diminuir(int qtd_compra){
-        if (qtd_compra > this.quantidade){
-             System.out.println("Estoque insuficiente!");
+    public  void alterarQtd(int idSelecionado, int vendaQtd){
+        
+        String sql = "UPDATE produtos Set produtos_qtd =  produtos_qtd - ?" + " WHERE produtos_id = ?";
+        PreparedStatement pstm = null;
+        
+        try {
+            Connection conexao = new Conexao().getConexao();
             
-        } else {
-            this.quantidade -= qtd_compra;
+            pstm = conexao.prepareStatement(sql);
+            pstm.setInt(1, vendaQtd);
+            pstm.setInt(2, idSelecionado);
+            
+            pstm.execute();
+            
+        } catch (SQLException e){
+            System.out.println("Erro ao alterar os dados da tabela Produtos! " + e.getMessage());
+        } finally {
+            try {
+                if (pstm != null){
+                    pstm.close();
+                }
+            } catch (SQLException e){
+                System.out.println(e.getMessage());
+            }
         }
+        
+        
     }
+      
+      
 
      
     
