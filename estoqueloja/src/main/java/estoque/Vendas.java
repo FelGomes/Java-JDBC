@@ -161,6 +161,7 @@ public class Vendas  {
             rset = pstm.executeQuery();
             
             while (rset.next()) {
+                System.out.println("=============================================");
                 System.out.println("ID: "+rset.getInt("vendas_id"));
                 System.out.println("Quantidade vendida: "+ rset.getInt("vendas_quantidade"));
                 System.out.println("Horario de venda: " +rset.getString("data_venda"));

@@ -173,6 +173,7 @@ public class Usuario extends Entidade{
             rset = pstm.executeQuery();
             
             while (rset.next()) {
+                System.out.println("=============================================");
                 System.out.println("Id: "+ rset.getInt("usuarios_id"));
                 System.out.println("Nome: "+ rset.getString("usuarios_nome"));
                 System.out.println("Sexo: " + rset.getString("usuarios_sexo"));

@@ -225,7 +225,7 @@ public class App {
                         Usuario usuv = new Usuario("vendas");
                         System.out.println("Informe seu ID: ");
                         int id_usu = scan.nextInt();
-                        
+                        scan.nextLine();
                         usuv.conferirUsu(id_usu);
                         System.out.println("Confirma ser esse usuarios?");
                         String confirmar = scan.nextLine().toLowerCase();
@@ -237,7 +237,7 @@ public class App {
 
                             Produtos prodtv =  new Produtos("vendas");
 
-                            System.out.println("Deseja fazer a compra de quantos items?");
+                            System.out.println("Deseja fazer a compra de quantos itens?");
                             int qtdProd = scan.nextInt(); 
                             scan.nextLine();
 
@@ -249,6 +249,7 @@ public class App {
                             prodtv.alterarQtd(id_prodt, qtdProd); // alterando valor de quantidade do produto da tabela produtos
 
                             venda.inserir(); // adiciona uma nova linha com essas informações
+                            System.out.println("Venda realizada com sucesso!");
                             
                         }else{
                             System.out.println("Id incorreto!");

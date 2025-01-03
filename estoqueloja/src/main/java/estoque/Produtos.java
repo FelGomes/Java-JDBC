@@ -179,6 +179,7 @@ public class Produtos extends Entidade {
             rset = pstm.executeQuery();
             
             while (rset.next()) {
+                System.out.println("=============================================");
                 System.out.println("ID: " +rset.getInt("produtos_id"));
                 System.out.println("Nome: " +rset.getString("produtos_nome"));
                 System.out.println("Valor: " +rset.getFloat("produtos_preco"));
