@@ -116,7 +116,7 @@ public class Fornecedores extends Entidade {
     
     public  void alterar(int idSelecionado){
         
-        String sql = "UPDATE fornecedores Set fornecedores_nome = ?, fornecedores_telefone = ?, fornecedores_nomeFantasia = ?, fornecedores_cnpj = ?, fornecedores_cidade = ?, fornecedores_uf = ?" + " WHERE id = ?";
+        String sql = "UPDATE fornecedores Set fornecedores_nome = ?, fornecedores_telefone = ?, fornecedores_nomeFantasia = ?, fornecedores_cnpj = ?, fornecedores_cidade = ?, fornecedores_uf = ?" + " WHERE fornecedores_id = ?";
         PreparedStatement pstm = null;
         
         try {

@@ -108,9 +108,9 @@ public class Vendas  {
      * Metodo para alterar os dados da tabela vendas - QUANTIDADE E DATA DA VENDA
      */
     
-    public  void alterar(){
+    public  void alterar(int id_selecionado){
         
-        String sql = "UPDATE venda Set venda_quantidade = ?, data_venda = ? " + " WHERE id = ?";
+        String sql = "UPDATE venda Set venda_quantidade = ?, data_venda = ?, usuario_id = ?, produtos_id = ? " + " WHERE id = ?";
         PreparedStatement pstm = null;
         
         try {
@@ -119,6 +119,10 @@ public class Vendas  {
             pstm = conexao.prepareStatement(sql);
             pstm.setInt(1, this.quantidade);
             pstm.setString(2, this.data);
+            pstm.setInt(3, this.id_usuario);
+            pstm.setInt(4, this.id_produtos);
+            pstm.setInt(5, id_selecionado);
+            
             //pstm.setInt(3, Vendas.super.getId());
             pstm.execute();
             

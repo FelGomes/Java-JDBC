@@ -120,7 +120,7 @@ public class Usuario extends Entidade{
     
     public  void alterar(int idSelecionado){
         
-        String sql = "UPDATE usuarios Set usuarios_nome = ?, usuarios_sexo = ?, usuarios_telefone = ?, usuarios_cpf = ?, usuarios_idade = ?, usuario_cidade = ?, usuario_uf = ?" + " WHERE usuarios_id = ?";
+        String sql = "UPDATE usuarios Set usuarios_nome = ?, usuarios_sexo = ?, usuarios_telefone = ?, usuarios_cpf = ?, usuarios_idade = ?, usuarios_cidade = ?, usuarios_uf = ?" + " WHERE usuarios_id = ?";
         PreparedStatement pstm = null;
         
         try {

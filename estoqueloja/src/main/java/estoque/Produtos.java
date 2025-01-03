@@ -130,7 +130,7 @@ public class Produtos extends Entidade {
     
     public  void alterar(int idSelecionado){
         
-        String sql = "UPDATE produtos Set produtos_nome = ?, produtos_preco = ?, produtos_marcas = ?, produtos_qtd =  ?" + " WHERE id = ?";
+        String sql = "UPDATE produtos Set produtos_nome = ?, produtos_preco = ?, produtos_marcas = ?, produtos_qtd =  ?" + " WHERE produtos_id = ?";
         PreparedStatement pstm = null;
         
         try {

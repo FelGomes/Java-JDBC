@@ -393,6 +393,7 @@ public class App {
 
                         switch (tabelaEsc) {
                             case 1:
+                                Estabelecimento esta = new Estabelecimento("estabelecimento");
                                 System.out.println("Listagem de estabelecimentos para localizar ID!");
                                 Estabelecimento estabelecimentos = new Estabelecimento("estabelecimento");
                                 estabelecimentos.listar();
@@ -417,10 +418,8 @@ public class App {
                                     cidade = scan.nextLine();
                                     System.out.println("Informe o UF dessa cidade: ");
                                     uf = scan.nextLine().toUpperCase();
-
-                                    Estabelecimento estb = new Estabelecimento("estabelecimento");
-                                    estb.alterar(estabelecimentoEsc, nome_fantasia, telefone, email, cnpj, cidade, uf);
-
+                                    Estabelecimento est = new Estabelecimento(nome_fantasia,telefone, email,cnpj,cidade,uf);
+                                    est.alterar(estabelecimentoEsc);
                                     System.out.println("Estabelecimento alterado com sucesso!!");
 
                                 } catch (Exception e) {
@@ -456,7 +455,6 @@ public class App {
                                     System.out.println("Informe o UF do estado dessa cidade: ");
                                     uf = scan.nextLine().toUpperCase();
                                     Fornecedores forn = new Fornecedores(nome, telefone, nome_fantasia, cnpj_forn, cidade, uf);
-
                                     forn.alterar(fornecedorEsc);
 
                                     System.out.println("Sucesso ao alterar os dados do Fornecedor!");
@@ -473,6 +471,7 @@ public class App {
                                     try {
                                         System.out.println("Digite o id a ser alterado!");
                                         produtoEsc = scan.nextInt();
+                                        scan.nextLine();
                                     } catch (Exception e) {
                                         System.out.println("Digite um valor valido!");
                                         break;// parar a execução e perguntar denovo!

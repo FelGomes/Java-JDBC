@@ -113,11 +113,12 @@ public class Estabelecimento extends Entidade{
     /**
      * Metodo para alterar os dados da tabela estabelecimento, atributos: nome, telefone, email e cnpj
      * @param idSelecionado
+     * 
      */
     
-    public  void alterar(int idSelecionado, String nome, String telefone, String email, String cnpj, String cidade_nome, String uf){
+    public  void alterar(int idSelecionado){
         
-        String sql = "UPDATE estabelecimento Set estabelecimento_nome = ?, estabelecimento_telefone = ?, estabelecimento_email = ?, estabelecimento_cnpj = ?, estabelecimento_cidade = ?, estabelecimento_uf = ?" + " WHERE id = ?";
+        String sql = "UPDATE estabelecimento Set estabelecimento_nome = ?, estabelecimento_telefone = ?, estabelecimento_email = ?, estabelecimento_cnpj = ?, estabelecimento_cidade = ?, estabelecimento_uf = ?" + " WHERE estabelecimento_id = ?";
         PreparedStatement pstm = null;
         
         try {
@@ -126,8 +127,8 @@ public class Estabelecimento extends Entidade{
             pstm = conexao.prepareStatement(sql);
             pstm.setString(1, Estabelecimento.super.getNome());
             pstm.setString(2, Estabelecimento.super.getTelefone());
-            pstm.setString(3, this.email);
-            pstm.setString(4, this.cnpj);
+            pstm.setString(3, email);
+            pstm.setString(4, cnpj);
             pstm.setString(5, Estabelecimento.super.getCidade_nome());
             pstm.setString(6, Estabelecimento.super.getCidade_uf());
             pstm.setInt(7, idSelecionado);
@@ -135,7 +136,7 @@ public class Estabelecimento extends Entidade{
             pstm.execute();
             
         } catch (SQLException e){
-            System.out.println("Erro ao alterar os dados da tabela estabelecimento " + e.getMessage());
+            System.out.println("Erro ao alterar os dados da tabela estabelecimento " + e.getMessage() + e.getLocalizedMessage());
         } finally {
             try {
                 if (pstm != null){
