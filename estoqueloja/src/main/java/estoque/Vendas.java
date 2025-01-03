@@ -86,7 +86,7 @@ public class Vendas  {
              Connection conexao = new Conexao().getConexao();
              
              pstm = conexao.prepareStatement(sql);
-             pstm.setInt(1, this.id_vendas);
+             pstm.setInt(1, id_selecionado);
              
              pstm.execute();
             
@@ -106,6 +106,7 @@ public class Vendas  {
     
     /**
      * Metodo para alterar os dados da tabela vendas - QUANTIDADE E DATA DA VENDA
+     * @param id_selecionado
      */
     
     public  void alterar(int id_selecionado){

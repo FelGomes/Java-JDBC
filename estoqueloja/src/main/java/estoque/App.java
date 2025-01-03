@@ -233,6 +233,7 @@ public class App {
                         
                         System.out.println("Deseja fazer a compra de quantos items?");
                         int qtdProd = scan.nextInt(); 
+                        scan.nextLine();
                         
                         System.out.println("Qual o dia que a venda foi realizada? EX (25/12/2020");
                         String dataVnd = scan.nextLine();
@@ -244,7 +245,8 @@ public class App {
                         venda.inserir(); // adiciona uma nova linha com essas informações
                         
                         
-                        
+                        System.out.println("Deseja comprar outro produto?");
+                        resposta = scan.nextLine().toLowerCase();
                        
                     }
 
@@ -263,6 +265,7 @@ public class App {
                         System.out.println("2 - Produtos");
                         System.out.println("3 - Estabelecimento");
                         System.out.println("4 - Fornecedores");
+                        System.out.println("5 - Vendas");
                         System.out.println("========================");
                         System.out.println("Deseja fazer remoção de qual tabela");
                         opc_rem = scan.nextInt();
@@ -342,7 +345,7 @@ public class App {
                                 // fazer listagem de todos os fornecedores para encontrar o id desejado a excluir
                                 // pedir o id selecionado e colocar ele como parametro no metodo remover() dessa maneira "fornecedores.remover(idSelecionado)"
                                 break;
-                            case 7:
+                            case 5:
                                 Vendas vendas = new Vendas();
                                 vendas.listar();
                                 System.out.println("Deseja fazer a remocao de algum ID?");
