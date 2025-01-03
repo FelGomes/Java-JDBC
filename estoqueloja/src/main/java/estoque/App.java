@@ -226,18 +226,18 @@ public class App {
                         System.out.println("Informe seu ID: ");
                         int id_usu = scan.nextInt();
                         Usuario usu = new Usuario("usuario");
-                        usu.conferir(id_usu);
-                        if (usu.conferir(id_usu)) {
+                       // usu.conferir(id_usu);
+                        //if (usu.conferir(id_usu)) {
                             System.out.println("Deseja ver os produtos que tem?");
                             String quero = scan.nextLine().toLowerCase();
                             if (quero.equals("sim") || quero.equals("s")) {
                                 prod.listar();
 
-                            }
+                           // }
                             System.out.println("Informe o ID do produto que voce deseja escolher: ");
                             int id_produtos = scan.nextInt();
-                            prod.conferir(id_produtos);
-                            if (prod.conferir(id_produtos)) {
+                            //prod.conferir(id_produtos);
+                           // if (prod.conferir(id_produtos)) {
                                 System.out.println("Deseja comprar quantas quantidades?");
                                 int quantidade_compras = scan.nextInt();
                                 prod.diminuir(quantidade_compras);
@@ -246,13 +246,13 @@ public class App {
                                 Vendas vend = new Vendas(quantidade_compras, horario, id_usu, id_produtos);
                                 vend.inserir();
 
-                            } else {
-                                System.out.println("Nao existe produtos com esse ID!");
+                            //} else {
+                            //    System.out.println("Nao existe produtos com esse ID!");
                             }
 
-                        } else {
-                            System.out.println("Nao existe esse esse ID!");
-                        }
+                       // } else {
+                          //  System.out.println("Nao existe esse esse ID!");
+                       // }
                     }
 
                     break;

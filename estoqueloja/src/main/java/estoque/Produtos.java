@@ -230,6 +230,7 @@ public class Produtos extends Entidade {
                 }
 
             }
+            return true;
         } catch(SQLException e){
             System.out.println("Erro ao conferir o produto especificado" + e.getMessage());
         } finally {

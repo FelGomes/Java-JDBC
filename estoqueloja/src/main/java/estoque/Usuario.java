@@ -217,6 +217,7 @@ public class Usuario extends Entidade{
             PreparedStatement stmt = null;
             stmt.setInt(1, Usuario.super.getId());
             
+            
         } catch(SQLException e){
             System.out.println("Esse ID nao existe na tabela de usuarios " + e.getMessage());
             return false;
