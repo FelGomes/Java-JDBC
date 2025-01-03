@@ -222,28 +222,37 @@ public class App {
                     String resposta = scan.nextLine().toLowerCase();
 
                     while (resposta.equals("sim") || resposta.equals("s")) {
+                        Usuario usuv = new Usuario("vendas");
                         System.out.println("Informe seu ID: ");
                         int id_usu = scan.nextInt();
                         
-                        System.out.println("Qual o id do Produto?");
-                        int id_prodt = scan.nextInt();
-                        
-                        Usuario usuv = new Usuario("vendas");
-                        Produtos prodtv =  new Produtos("vendas");
-                        
-                        System.out.println("Deseja fazer a compra de quantos items?");
-                        int qtdProd = scan.nextInt(); 
-                        scan.nextLine();
-                        
-                        System.out.println("Qual o dia que a venda foi realizada? EX (25/12/2020");
-                        String dataVnd = scan.nextLine();
-                        
-                        Vendas venda = new Vendas(qtdProd,dataVnd, id_usu, id_prodt); 
-                        
-                        prodtv.alterarQtd(id_prodt, qtdProd); // alterando valor de quantidade do produto da tabela produtos
-                        
-                        venda.inserir(); // adiciona uma nova linha com essas informações
-                        
+                        usuv.conferirUsu(id_usu);
+                        System.out.println("Confirma ser esse usuarios?");
+                        String confirmar = scan.nextLine().toLowerCase();
+                        if(confirmar.equals("sim") || confirmar.equals("s")){
+                            
+                            System.out.println("Qual o id do Produto?");
+                            int id_prodt = scan.nextInt();
+
+
+                            Produtos prodtv =  new Produtos("vendas");
+
+                            System.out.println("Deseja fazer a compra de quantos items?");
+                            int qtdProd = scan.nextInt(); 
+                            scan.nextLine();
+
+                            System.out.println("Qual o dia que a venda foi realizada? EX (25/12/2020");
+                            String dataVnd = scan.nextLine();
+
+                            Vendas venda = new Vendas(qtdProd,dataVnd, id_usu, id_prodt); 
+
+                            prodtv.alterarQtd(id_prodt, qtdProd); // alterando valor de quantidade do produto da tabela produtos
+
+                            venda.inserir(); // adiciona uma nova linha com essas informações
+                            
+                        }else{
+                            System.out.println("Id incorreto!");
+                        }
                         
                         System.out.println("Deseja comprar outro produto?");
                         resposta = scan.nextLine().toLowerCase();
