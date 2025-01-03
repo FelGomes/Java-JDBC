@@ -78,7 +78,7 @@ public class Vendas  {
 
     public void remover(int id_selecionado){
 
-        String sql = "DELETE FROM vendas WHERE id = ?";
+        String sql = "DELETE FROM vendas WHERE vendas_id = ?";
         
         PreparedStatement pstm = null;
         

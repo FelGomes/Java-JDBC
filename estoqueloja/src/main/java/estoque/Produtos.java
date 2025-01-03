@@ -97,7 +97,7 @@ public class Produtos extends Entidade {
 
     public void remover(int idSelecionado){
 
-        String sql = "DELETE FROM produtos WHERE id = ?";
+        String sql = "DELETE FROM produtos WHERE produtos_id = ?";
         
         PreparedStatement pstm = null;
         

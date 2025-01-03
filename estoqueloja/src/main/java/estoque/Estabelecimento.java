@@ -84,7 +84,7 @@ public class Estabelecimento extends Entidade{
 
     public void remover(int idSelecionado){
 
-        String sql = "DELETE FROM estabelecimento WHERE id = ?";
+        String sql = "DELETE FROM estabelecimento WHERE estabelecimento_id = ?";
         
         PreparedStatement pstm = null;
         

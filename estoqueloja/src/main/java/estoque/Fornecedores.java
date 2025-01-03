@@ -82,7 +82,7 @@ public class Fornecedores extends Entidade {
 
     public void remover(int idSelecionado){
 
-        String sql = "DELETE FROM fornecedores WHERE id = ?";
+        String sql = "DELETE FROM fornecedores WHERE fornecedores_id = ?";
         
         PreparedStatement pstm = null;
         
