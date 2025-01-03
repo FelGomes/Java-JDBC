@@ -201,7 +201,7 @@ public class Usuario extends Entidade{
         }
     }
     
-     public boolean conferir(int id_usu){
+     public void conferirUsu(int idSelecionado){
         
         String sql = "SELECT * FROM usuarios WHERE usuarios_id = ?";
         
@@ -212,15 +212,20 @@ public class Usuario extends Entidade{
             Connection conexao = new Conexao().getConexao();
             
             pstm = conexao.prepareStatement(sql);
-            
+            pstm.setInt(1, idSelecionado);
+            pstm.execute();
             rset = pstm.executeQuery();
-            PreparedStatement stmt = null;
-            stmt.setInt(1, Usuario.super.getId());
             
+            while (rset.next()) {
+                System.out.println("Id: "+ rset.getInt("usuarios_id"));
+                System.out.println("Nome: "+ rset.getString("usuarios_nome"));
+                System.out.println("Sexo: " + rset.getString("usuarios_sexo"));
+                System.out.println("Idade: " +rset.getInt("usuarios_idade"));
+                System.out.println("=============================================");
+            }
             
         } catch(SQLException e){
-            System.out.println("Esse ID nao existe na tabela de usuarios " + e.getMessage());
-            return false;
+            System.out.println("Erro ao listar os dados da tabela usuarios " + e.getMessage());
         } finally {
             
             try {
@@ -235,7 +240,6 @@ public class Usuario extends Entidade{
                 System.out.println(e.getMessage());
             }
         }
-        return true;
     }
 
 }
