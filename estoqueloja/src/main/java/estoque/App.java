@@ -290,7 +290,13 @@ public class App {
                                     try {
                                         System.out.println("Informe o ID que voce deseja remover: ");
                                         id_remocao = scan.nextInt();
-                                        usu.remover(id_remocao);
+                                        boolean valor = Usuario.verificarUsuario(id_remocao);
+                                        if(valor == true){
+                                           usu.remover(id_remocao);
+                                        } else{
+                                            System.out.println("Esse ID nao existe");
+                                        }
+                                        
                                         scan.nextLine();
                                     } catch (Exception e) {
                                         System.out.println("Erro ao remover o id de usuario" + e.getMessage() + e.getLocalizedMessage());
@@ -309,7 +315,12 @@ public class App {
                                     try {
                                         System.out.println("Informe o ID que deseja remover: ");
                                         id_remocao = scan.nextInt();
-                                        pro.remover(id_remocao);
+                                        boolean valor = Produtos.verificarProduto(id_remocao);
+                                        if(valor == true){
+                                            pro.remover(id_remocao);
+                                        }else {
+                                            System.out.println("Esse ID nao existe!");
+                                        }
                                         scan.nextLine();
                                     } catch (Exception e) {
                                         System.out.println("Erro ao remover o ID de produtos " + e.getMessage() + e.getLocalizedMessage());
@@ -327,7 +338,13 @@ public class App {
                                     try {
                                         System.out.println("Informe o ID que voce deseja remover: ");
                                         id_remocao = scan.nextInt();
-                                        esta.remover(id_remocao);
+                                        boolean valor = Estabelecimento.verificarEstabelecimento(id_remocao);
+                                        if(valor == true){
+                                            esta.remover(id_remocao);
+                                            
+                                        }else {
+                                            System.out.println("Nao existe esse ID!");
+                                        }
                                         scan.nextLine();
                                     } catch (Exception e) {
                                         System.out.println("Erro ao remover Id de estabelecimento! " + e.getMessage() + e.getLocalizedMessage());
@@ -346,7 +363,13 @@ public class App {
                                     try {
                                         System.out.println("Informe o ID que voce deseja remover: ");
                                         id_remocao = scan.nextInt();
+                                        boolean valor = Fornecedores.verificarFornecedor(id_remocao);
+                                        if (valor == true){
                                         forn.remover(id_remocao);
+                                            
+                                        }else {
+                                            System.out.println("Esse ID nao existe!");
+                                        }
                                         scan.nextLine();
                                     } catch (Exception e) {
                                         System.out.println("Erro ao remover o ID de fornecedores! " + e.getMessage() + e.getLocalizedMessage());
@@ -364,7 +387,14 @@ public class App {
                                     try {
                                         System.out.println("Qual ID? ");
                                         id_remocao = scan.nextInt();
-                                        vendas.remover(id_remocao);
+                                        boolean valor = Vendas.verificarVendas(id_remocao);
+                                        if(valor == true){
+                                            vendas.remover(id_remocao);
+                                           
+                                        } else {
+                                            System.out.println("Nao existe esse ID!");
+                                        }
+                                        
                                         scan.nextLine();
 
                                     } catch (Exception e) {

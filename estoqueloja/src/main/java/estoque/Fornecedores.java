@@ -195,6 +195,37 @@ public class Fornecedores extends Entidade {
         }
     }
     
+    /**
+     * Metodo para verificar se o id do fornecedor existe
+     * @param id_fornecedor
+     * @return 
+     */
+     public static boolean verificarFornecedor(int id_fornecedor){
+        Connection conexao = new Conexao().getConexao();
+       
+        String sql = "SELECT * FROM  WHERE fornecedeores_id = ?";
+        boolean usuario = false;
+        
+        try {
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setInt(1, id_fornecedor);
+            
+            ResultSet resultado = comando.executeQuery();
+            
+            if(resultado.next()){
+                String FornExistente = resultado.getString("fornecedores");
+                if("Existente".equalsIgnoreCase(FornExistente)){
+                    usuario = true;
+                }
+            }
+            resultado.close();
+            comando.close();
+            conexao.close();
+        }catch(Exception e){
+            System.out.println("Erro ao verificar a tabela fornecedores: " + e.getMessage());
+        }
+        return usuario;
+    }
 }
 
 

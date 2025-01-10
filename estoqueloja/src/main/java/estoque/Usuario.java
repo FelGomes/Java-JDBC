@@ -242,5 +242,36 @@ public class Usuario extends Entidade{
             }
         }
     }
+     /**
+      * Metodo para verificar se usuario existe
+      * @param id_usuario
+      * @return 
+      */
+     public static boolean verificarUsuario(int id_usuario){
+        Connection conexao = new Conexao().getConexao();
+       
+        String sql = "SELECT * FROM usuarios WHERE usuarios_id = ?";
+        boolean usuario = false;
+        
+        try {
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setInt(1, id_usuario);
+            
+            ResultSet resultado = comando.executeQuery();
+            
+            if(resultado.next()){
+                String UsuExistente = resultado.getString("usuarios_id");
+                if("Existente".equalsIgnoreCase(UsuExistente)){
+                    usuario = true;
+                }
+            }
+            resultado.close();
+            comando.close();
+            conexao.close();
+        }catch(Exception e){
+            System.out.println("Erro ao verificar a tabela usuarios : " + e.getMessage());
+        }
+        return usuario;
+    }
 
 }

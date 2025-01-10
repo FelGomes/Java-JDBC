@@ -204,52 +204,36 @@ public class Produtos extends Entidade {
             }
         }
     }
-     
-     public boolean conferir(int id_produtos){
-        
-        String sql = "SELECT * FROM produtos Where produtos_id = ?";
-        
-        PreparedStatement pstm = null;
-        ResultSet rset = null;
+    /**
+     * Metodo para verificar se o id do produto existe
+     * @param id_produto
+     * @return 
+     */
+    public static boolean verificarProduto(int id_produto){
+        Connection conexao = new Conexao().getConexao();
+       
+        String sql = "SELECT * FROM produtos WHERE produtos_id = ?";
+        boolean usuario = false;
         
         try {
-            Connection conexao = new Conexao().getConexao();
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setInt(1, id_produto);
             
-            pstm = conexao.prepareStatement(sql);
+            ResultSet resultado = comando.executeQuery();
             
-            rset = pstm.executeQuery();
-            pstm.setInt(1, Produtos.super.getId());
-            
-            while (rset.next()) {
-                if (rset.getInt("produtos_id") == id_produtos){
-                    System.out.println("Nome " + rset.getString("produtos_nome"));
-                    System.out.println("Preco: " + rset.getString("produtos_preco"));
-                    return true;
-                } else {
-                    System.out.println("Nao existe esse produto");
-                    return false;
+            if(resultado.next()){
+                String ProdExistente = resultado.getString("produtos");
+                if("Existente".equalsIgnoreCase(ProdExistente)){
+                    usuario = true;
                 }
-
             }
-            return true;
-        } catch(SQLException e){
-            System.out.println("Erro ao conferir o produto especificado" + e.getMessage());
-        } finally {
-            
-            try {
-                if (rset != null){
-                    rset.close();
-                    
-                }
-                if (pstm != null){
-                    pstm.close();
-                }
-            } catch(SQLException e){
-                System.out.println(e.getMessage());
-                return false;
-            }
+            resultado.close();
+            comando.close();
+            conexao.close();
+        }catch(Exception e){
+            System.out.println("Erro na tabela de produtos! " + e.getMessage());
         }
-       return true;
+        return usuario;
     }
     
     public  void alterarQtd(int idSelecionado, int vendaQtd){

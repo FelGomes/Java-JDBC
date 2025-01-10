@@ -196,5 +196,36 @@ public class Estabelecimento extends Entidade{
             }
         }
     }
+     /**
+      * 
+      * @param id_estabelecimento
+      * @return 
+      */
+     public static boolean verificarEstabelecimento(int id_estabelecimento){
+        Connection conexao = new Conexao().getConexao();
+       
+        String sql = "SELECT * FROM estabelecimento WHERE estabelecimento_id = ?";
+        boolean usuario = false;
+        
+        try {
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setInt(1, id_estabelecimento);
+            
+            ResultSet resultado = comando.executeQuery();
+            
+            if(resultado.next()){
+                String EstabelExistente = resultado.getString("estabelecimento");
+                if("Existente".equalsIgnoreCase(EstabelExistente)){
+                    usuario = true;
+                }
+            }
+            resultado.close();
+            comando.close();
+            conexao.close();
+        }catch(Exception e){
+            System.out.println("Este ID nao existe: " + e.getMessage());
+        }
+        return usuario;
+    }
     
 }

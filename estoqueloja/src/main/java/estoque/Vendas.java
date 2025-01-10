@@ -186,6 +186,38 @@ public class Vendas  {
             }
         }
     }
+     /**
+      * Metodo para verificar se o id de vendas existe
+      * @param id_vendas
+      * @return 
+      */
+     
+     public static boolean verificarVendas(int id_vendas){
+        Connection conexao = new Conexao().getConexao();
+       
+        String sql = "SELECT * FROM vendas WHERE vendas_id = ?";
+        boolean vendas = false;
+        
+        try {
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setInt(1, id_vendas);
+            
+            ResultSet resultado = comando.executeQuery();
+            
+            if(resultado.next()){
+                String VendaExistente = resultado.getString("vendas_id");
+                if("Existente".equalsIgnoreCase(VendaExistente)){
+                    vendas = true;
+                }
+            }
+            resultado.close();
+            comando.close();
+            conexao.close();
+        }catch(Exception e){
+            System.out.println("Erro ao verificar a tabela vendas : " + e.getMessage());
+        }
+        return vendas;
+    }
     
     
 }
