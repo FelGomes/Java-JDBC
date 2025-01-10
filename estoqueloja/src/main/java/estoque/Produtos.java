@@ -206,34 +206,21 @@ public class Produtos extends Entidade {
     }
     /**
      * Metodo para verificar se o id do produto existe
-     * @param id_produto
+     * @param idProduto
      * @return 
      */
-    public static boolean verificarProduto(int id_produto){
-        Connection conexao = new Conexao().getConexao();
-       
-        String sql = "SELECT * FROM produtos WHERE produtos_id = ?";
-        boolean usuario = false;
-        
-        try {
-            PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setInt(1, id_produto);
-            
-            ResultSet resultado = comando.executeQuery();
-            
-            if(resultado.next()){
-                String ProdExistente = resultado.getString("produtos");
-                if("Existente".equalsIgnoreCase(ProdExistente)){
-                    usuario = true;
-                }
-            }
-            resultado.close();
-            comando.close();
-            conexao.close();
-        }catch(Exception e){
-            System.out.println("Erro na tabela de produtos! " + e.getMessage());
+    public static boolean verificarProduto(int idProduto) {
+        boolean existe = false;
+        try (Connection conexao = new Conexao().getConexao();
+            PreparedStatement comando = conexao.prepareStatement("SELECT * FROM produtos WHERE produtos_id = ?")) {
+            comando.setInt(1, idProduto);
+        try (ResultSet resultado = comando.executeQuery()) {
+            existe = resultado.next();
         }
-        return usuario;
+        } catch (SQLException e) {
+            System.out.println("Erro na tabela de produtos: " + e.getMessage());
+        }
+        return existe;
     }
     
     public  void alterarQtd(int idSelecionado, int vendaQtd){
