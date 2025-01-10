@@ -247,31 +247,17 @@ public class Usuario extends Entidade{
       * @param id_usuario
       * @return 
       */
-     public static boolean verificarUsuario(int id_usuario){
-        Connection conexao = new Conexao().getConexao();
-       
-        String sql = "SELECT * FROM usuarios WHERE usuarios_id = ?";
-        boolean usuario = false;
-        
-        try {
-            PreparedStatement comando = conexao.prepareStatement(sql);
+    public static boolean verificarUsuario(int id_usuario) {
+        try (Connection conexao = new Conexao().getConexao();
+            PreparedStatement comando = conexao.prepareStatement("SELECT * FROM usuarios WHERE usuarios_id = ?")) {
             comando.setInt(1, id_usuario);
-            
-            ResultSet resultado = comando.executeQuery();
-            
-            if(resultado.next()){
-                String UsuExistente = resultado.getString("usuarios_id");
-                if("Existente".equalsIgnoreCase(UsuExistente)){
-                    usuario = true;
-                }
+            try (ResultSet resultado = comando.executeQuery()) {
+                return resultado.next(); // Se tiver resultado, usuário existe
             }
-            resultado.close();
-            comando.close();
-            conexao.close();
-        }catch(Exception e){
-            System.out.println("Erro ao verificar a tabela usuarios : " + e.getMessage());
-        }
-        return usuario;
+            } catch (SQLException e) {
+                System.out.println("Erro ao verificar a tabela usuários: " + e.getMessage());
+            }
+        return false;
     }
 
 }

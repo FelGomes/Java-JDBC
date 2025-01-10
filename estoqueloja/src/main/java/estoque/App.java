@@ -226,40 +226,45 @@ public class App {
                         System.out.println("Informe seu ID: ");
                         int id_usu = scan.nextInt();
                         scan.nextLine();
-                        usuv.conferirUsu(id_usu);
-                        System.out.println("Confirma ser esse usuarios?");
-                        String confirmar = scan.nextLine().toLowerCase();
-                        if(confirmar.equals("sim") || confirmar.equals("s")){
-                            
-                            System.out.println("Qual o id do Produto?");
-                            int id_prodt = scan.nextInt();
+                        boolean existe = Usuario.verificarUsuario(id_usu);
+                        if(existe == true){
+                            usuv.conferirUsu(id_usu);
+                            System.out.println("Confirma ser esse usuarios?");
+                            String confirmar = scan.nextLine().toLowerCase();
+                            if(confirmar.equals("sim") || confirmar.equals("s")){
+                                 System.out.println("Qual o id do Produto?");
+                                int id_prodt = scan.nextInt();
+                                Produtos prodtv =  new Produtos("vendas");
+                                boolean valor = Vendas.verificarVendas(id_prodt);
+                                if(valor == true){
 
+                                    System.out.println("Deseja fazer a compra de quantos itens?");
+                                    int qtdProd = scan.nextInt(); 
+                                    scan.nextLine();
 
-                            Produtos prodtv =  new Produtos("vendas");
+                                    System.out.println("Qual o dia que a venda foi realizada? EX (25/12/2020");
+                                    String dataVnd = scan.nextLine();
 
-                            System.out.println("Deseja fazer a compra de quantos itens?");
-                            int qtdProd = scan.nextInt(); 
-                            scan.nextLine();
+                                    Vendas venda = new Vendas(qtdProd,dataVnd, id_usu, id_prodt); 
 
-                            System.out.println("Qual o dia que a venda foi realizada? EX (25/12/2020");
-                            String dataVnd = scan.nextLine();
+                                    prodtv.alterarQtd(id_prodt, qtdProd); // alterando valor de quantidade do produto da tabela produtos
 
-                            Vendas venda = new Vendas(qtdProd,dataVnd, id_usu, id_prodt); 
-
-                            prodtv.alterarQtd(id_prodt, qtdProd); // alterando valor de quantidade do produto da tabela produtos
-
-                            venda.inserir(); // adiciona uma nova linha com essas informações
-                            System.out.println("Venda realizada com sucesso!");
-                            
-                        }else{
-                            System.out.println("Id incorreto!");
+                                    venda.inserir(); // adiciona uma nova linha com essas informações
+                                    System.out.println("Venda realizada com sucesso!");
+                                } else {
+                                    System.out.println("Esse ID de produto nao existe!");
+                                }
+                            } else {
+                                break;
+                            }
+                        }else {
+                            System.out.println("Id de usuario nao existe");
                         }
                         
-                        System.out.println("Deseja comprar outro produto?");
+                        System.out.println("Deseja comprar outro produto?");          
                         resposta = scan.nextLine().toLowerCase();
+                    }    
                        
-                    }
-
                     break;
 
                 case 6:
@@ -277,7 +282,7 @@ public class App {
                         System.out.println("4 - Fornecedores");
                         System.out.println("5 - Vendas");
                         System.out.println("========================");
-                        System.out.println("Deseja fazer remoção de qual tabela");
+                        System.out.println("Deseja fazer remoção de qual tabela?");
                         opc_rem = scan.nextInt();
                         scan.nextLine();
                         switch (opc_rem) {
@@ -293,6 +298,7 @@ public class App {
                                         boolean valor = Usuario.verificarUsuario(id_remocao);
                                         if(valor == true){
                                            usu.remover(id_remocao);
+                                            System.out.println("Usuario removido com sucesso!");
                                         } else{
                                             System.out.println("Esse ID nao existe");
                                         }
@@ -318,6 +324,7 @@ public class App {
                                         boolean valor = Produtos.verificarProduto(id_remocao);
                                         if(valor == true){
                                             pro.remover(id_remocao);
+                                            System.out.println("Produto removido com sucesso!");
                                         }else {
                                             System.out.println("Esse ID nao existe!");
                                         }
@@ -341,6 +348,7 @@ public class App {
                                         boolean valor = Estabelecimento.verificarEstabelecimento(id_remocao);
                                         if(valor == true){
                                             esta.remover(id_remocao);
+                                            System.out.println("Estabelecimento removido com sucesso!");
                                             
                                         }else {
                                             System.out.println("Nao existe esse ID!");
@@ -365,7 +373,8 @@ public class App {
                                         id_remocao = scan.nextInt();
                                         boolean valor = Fornecedores.verificarFornecedor(id_remocao);
                                         if (valor == true){
-                                        forn.remover(id_remocao);
+                                            forn.remover(id_remocao);
+                                            System.out.println("Fornecedor removido com sucesso!");
                                             
                                         }else {
                                             System.out.println("Esse ID nao existe!");
@@ -390,6 +399,7 @@ public class App {
                                         boolean valor = Vendas.verificarVendas(id_remocao);
                                         if(valor == true){
                                             vendas.remover(id_remocao);
+                                            System.out.println("Venda removido com sucesso!");
                                            
                                         } else {
                                             System.out.println("Nao existe esse ID!");
@@ -442,21 +452,26 @@ public class App {
                                         System.out.println("Digite um valor valido!!");
                                         break;// parar a execução e perguntar denovo!
                                     }
-                                    System.out.println("Informe o novo nome fantasia do Estabelecimento");
-                                    nome_fantasia = scan.nextLine();
-                                    System.out.println("Informe o novo telefone do Estabelecimento");
-                                    telefone = scan.nextLine();
-                                    System.out.println("Informe o novo endereço eletronico do Estabelecimento (email)");
-                                    email = scan.nextLine();
-                                    System.out.println("Informe o novo CNPJ/CPF do estabelecimento");
-                                    cnpj = scan.nextLine();
-                                    System.out.println("Informe o novo nome da cidade do estabelecimento: ");
-                                    cidade = scan.nextLine();
-                                    System.out.println("Informe o UF dessa cidade: ");
-                                    uf = scan.nextLine().toUpperCase();
-                                    Estabelecimento est = new Estabelecimento(nome_fantasia,telefone, email,cnpj,cidade,uf);
-                                    est.alterar(estabelecimentoEsc);
-                                    System.out.println("Estabelecimento alterado com sucesso!!");
+                                    boolean valor = Estabelecimento.verificarEstabelecimento(estabelecimentoEsc);
+                                    if(valor == true){
+                                        System.out.println("Informe o novo nome fantasia do Estabelecimento");
+                                        nome_fantasia = scan.nextLine();
+                                        System.out.println("Informe o novo telefone do Estabelecimento");
+                                        telefone = scan.nextLine();
+                                        System.out.println("Informe o novo endereço eletronico do Estabelecimento (email)");
+                                        email = scan.nextLine();
+                                        System.out.println("Informe o novo CNPJ/CPF do estabelecimento");
+                                        cnpj = scan.nextLine();
+                                        System.out.println("Informe o novo nome da cidade do estabelecimento: ");
+                                        cidade = scan.nextLine();
+                                        System.out.println("Informe o UF dessa cidade: ");
+                                        uf = scan.nextLine().toUpperCase();
+                                        Estabelecimento est = new Estabelecimento(nome_fantasia,telefone, email,cnpj,cidade,uf);
+                                        est.alterar(estabelecimentoEsc);
+                                        System.out.println("Estabelecimento alterado com sucesso!!");
+                                    } else {
+                                        System.out.println("Esse ID nao existe");
+                                    }
 
                                 } catch (Exception e) {
                                     System.out.println("Erro ao alterar o estabelecimento! " + e.getMessage() + e.getLocalizedMessage());
@@ -473,27 +488,32 @@ public class App {
                                         System.out.println("Digite o id a ser alterado!");
                                         fornecedorEsc = scan.nextInt();
                                         scan.nextLine();
-
+                                        boolean valor = Fornecedores.verificarFornecedor(fornecedorEsc);
                                     } catch (Exception e) {
                                         System.out.println("Digite um valor valido!");
                                         break;// parar a execução e perguntar denovo!
                                     }
-                                    System.out.println("Informe seu nome: ");
-                                    nome = scan.nextLine();
-                                    System.out.println("Informe o telefone: ");
-                                    telefone = scan.nextLine();
-                                    System.out.println("Informe o nome fantasia: ");
-                                    nome_fantasia = scan.nextLine();
-                                    System.out.println("Informe o CNPJ: ");
-                                    cnpj_forn = scan.nextLine();
-                                    System.out.println("Informe o novo nome da cidade do Fornecedor: ");
-                                    cidade = scan.nextLine();
-                                    System.out.println("Informe o UF do estado dessa cidade: ");
-                                    uf = scan.nextLine().toUpperCase();
-                                    Fornecedores forn = new Fornecedores(nome, telefone, nome_fantasia, cnpj_forn, cidade, uf);
-                                    forn.alterar(fornecedorEsc);
+                                    boolean valor = Fornecedores.verificarFornecedor(fornecedorEsc);
+                                    if (valor == true){
+                                        System.out.println("Informe seu nome: ");
+                                        nome = scan.nextLine();
+                                        System.out.println("Informe o telefone: ");
+                                        telefone = scan.nextLine();
+                                        System.out.println("Informe o nome fantasia: ");
+                                        nome_fantasia = scan.nextLine();
+                                        System.out.println("Informe o CNPJ: ");
+                                        cnpj_forn = scan.nextLine();
+                                        System.out.println("Informe o novo nome da cidade do Fornecedor: ");
+                                        cidade = scan.nextLine();
+                                        System.out.println("Informe o UF do estado dessa cidade: ");
+                                        uf = scan.nextLine().toUpperCase();
+                                        Fornecedores forn = new Fornecedores(nome, telefone, nome_fantasia, cnpj_forn, cidade, uf);
+                                        forn.alterar(fornecedorEsc);
 
-                                    System.out.println("Sucesso ao alterar os dados do Fornecedor!");
+                                        System.out.println("Sucesso ao alterar os dados do Fornecedor!");
+                                    } else {
+                                        System.out.println("Esse ID nao existe!");
+                                    }
 
                                 } catch (Exception e) {
                                     System.out.println("Erro ao alterar o Fornecedor! " + e.getMessage() + e.getLocalizedMessage());
@@ -512,21 +532,27 @@ public class App {
                                         System.out.println("Digite um valor valido!");
                                         break;// parar a execução e perguntar denovo!
                                     }
-                                    System.out.println("Informe o nome do produto");
-                                    nome = scan.nextLine();
-                                    System.out.println("Informe a Marca do produto");
-                                    marca = scan.nextLine();
-                                    System.out.println("Informe a Quantidade desse produto no estoque");
-                                    qtd = scan.nextInt();
-                                    scan.nextLine();
-                                    System.out.println("Informe o preço deste produto");
-                                    preco = scan.nextFloat();
+                                    boolean valor = Produtos.verificarProduto(produtoEsc);
+                                    if(valor == true){
+                                        System.out.println("Informe o nome do produto");
+                                        nome = scan.nextLine();
+                                        System.out.println("Informe a Marca do produto");
+                                        marca = scan.nextLine();
+                                        System.out.println("Informe a Quantidade desse produto no estoque");
+                                        qtd = scan.nextInt();
+                                        scan.nextLine();
+                                        System.out.println("Informe o preço deste produto");
+                                        preco = scan.nextFloat();
 
-                                    Produtos prodt = new Produtos(nome, preco, marca, qtd);
+                                        Produtos prodt = new Produtos(nome, preco, marca, qtd);
 
-                                    prodt.alterar(produtoEsc);
+                                        prodt.alterar(produtoEsc);
 
-                                    System.out.println("Produto alterado com sucesso!");
+                                        System.out.println("Produto alterado com sucesso!");
+                                        
+                                    } else {
+                                        System.out.println("Esse ID nao existe!");
+                                    }
                                 } catch (Exception e) {
                                     System.out.println("Erro ao alterar o Produto! " + e.getMessage() + e.getLocalizedMessage());
                                 }
@@ -544,29 +570,36 @@ public class App {
                                         System.out.println("Digite um valor valido!");
                                         break;// parar a execução e perguntar denovo!
                                     }
-                                    System.out.println("Informe o seu nome: ");
-                                    nome = scan.nextLine();
-                                    System.out.println("Informe seu sexo: ");
-                                    sexo = scan.nextLine();
-                                    System.out.println("Informe seu telefone: ");
-                                    telefone = scan.nextLine();
-                                    System.out.println("Informe seu cpf:");
-                                    cpf = scan.nextLine();
-                                    System.out.println("Informe sua idade:");
-                                    idade = scan.nextInt();
-                                    scan.nextLine();
-                                    if (idade <= 0 || idade >= 110) {
-                                        System.out.println("Idade invalida!");
-                                        break;
-                                    }
-                                    System.out.println("Informe a nova cidade do usuario: ");
-                                    cidade = scan.nextLine();
-                                    System.out.println("Informe o UF do estado: ");
-                                    uf = scan.nextLine().toUpperCase();
-                                    Usuario usu = new Usuario(nome, sexo, telefone, cpf, idade, cidade, uf);
-                                    usu.alterar(usuarioEsc);
+                                    boolean valor = Usuario.verificarUsuario(usuarioEsc);
+                                    if (valor == true){
+                                        
+                                        System.out.println("Informe o seu nome: ");
+                                        nome = scan.nextLine();
+                                        System.out.println("Informe seu sexo: ");
+                                        sexo = scan.nextLine();
+                                        System.out.println("Informe seu telefone: ");
+                                        telefone = scan.nextLine();
+                                        System.out.println("Informe seu cpf:");
+                                        cpf = scan.nextLine();
+                                        System.out.println("Informe sua idade:");
+                                        idade = scan.nextInt();
+                                        scan.nextLine();
+                                        if (idade <= 0 || idade >= 110) {
+                                            System.out.println("Idade invalida!");
+                                            break;
+                                        }
+                                        System.out.println("Informe a nova cidade do usuario: ");
+                                        cidade = scan.nextLine();
+                                        System.out.println("Informe o UF do estado: ");
+                                        uf = scan.nextLine().toUpperCase();
+                                        Usuario usu = new Usuario(nome, sexo, telefone, cpf, idade, cidade, uf);
+                                        usu.alterar(usuarioEsc);
 
-                                    System.out.println("Usuario alterado com sucesso!");
+                                        System.out.println("Usuario alterado com sucesso!");
+                                        
+                                    } else {
+                                        System.out.println("Esse ID nao existe! ");
+                                    }
 
                                 } catch (Exception e) {
                                     System.out.println("Erro ao alterar o usuario! " + e.getMessage() + e.getLocalizedMessage());

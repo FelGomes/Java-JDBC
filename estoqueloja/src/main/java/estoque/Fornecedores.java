@@ -200,31 +200,18 @@ public class Fornecedores extends Entidade {
      * @param id_fornecedor
      * @return 
      */
-     public static boolean verificarFornecedor(int id_fornecedor){
-        Connection conexao = new Conexao().getConexao();
-       
-        String sql = "SELECT * FROM  WHERE fornecedeores_id = ?";
-        boolean usuario = false;
-        
-        try {
-            PreparedStatement comando = conexao.prepareStatement(sql);
+     
+    public static boolean verificarFornecedor(int id_fornecedor) {
+        try (Connection conexao = new Conexao().getConexao();
+             PreparedStatement comando = conexao.prepareStatement("SELECT * FROM fornecedores WHERE fornecedores_id = ?")) {
             comando.setInt(1, id_fornecedor);
-            
-            ResultSet resultado = comando.executeQuery();
-            
-            if(resultado.next()){
-                String FornExistente = resultado.getString("fornecedores");
-                if("Existente".equalsIgnoreCase(FornExistente)){
-                    usuario = true;
-                }
+            try (ResultSet resultado = comando.executeQuery()) {
+                return resultado.next(); // Se tiver resultado, fornecedor existe
             }
-            resultado.close();
-            comando.close();
-            conexao.close();
-        }catch(Exception e){
+        } catch (SQLException e) {
             System.out.println("Erro ao verificar a tabela fornecedores: " + e.getMessage());
         }
-        return usuario;
+        return false;
     }
 }
 
