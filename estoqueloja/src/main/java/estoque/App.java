@@ -94,7 +94,7 @@ public class App {
                                 break;
                             }
                             scan.nextLine();
-                            System.out.println("Informe o nome da sua ciade: ");
+                            System.out.println("Informe o nome da sua cidade: ");
                             cidade = scan.nextLine();
                             System.out.println("Informe o UF do seu estado");
                             uf = scan.nextLine().toUpperCase();;
@@ -223,7 +223,7 @@ public class App {
 
                     while (resposta.equals("sim") || resposta.equals("s")) {
                         Usuario usuv = new Usuario("vendas");
-                        System.out.println("Informe seu ID: ");
+                        System.out.println("Informe o ID de usuario: ");
                         int id_usu = scan.nextInt();
                         scan.nextLine();
                         boolean existe = Usuario.verificarUsuario(id_usu);
@@ -304,6 +304,7 @@ public class App {
                                         }
                                         
                                         scan.nextLine();
+                                                
                                     } catch (Exception e) {
                                         System.out.println("Erro ao remover o id de usuario" + e.getMessage() + e.getLocalizedMessage());
                                     }
